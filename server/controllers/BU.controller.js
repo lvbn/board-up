@@ -17,11 +17,9 @@ module.exports = {
   postBU: async (ctx) => {
     try {
       console.log(ctx)
-      const { gameName, gameLevel, maxNoOfParticipants,
-        location, date, details, contactInfo } = ctx.request.body;
+      const { game, level, players, location, date, details, email} = ctx.request.body;
       
-      const bu = await query.saveBU(gameName, gameLevel, maxNoOfParticipants,
-        location, date, details, contactInfo);
+      const bu = await query.saveBU(game, level, players, location, date, details, email);
       
       ctx.response.status = 201;
 

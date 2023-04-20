@@ -4,16 +4,16 @@ const mongoose = require('mongoose');
 
 const BUSchema = new mongoose.Schema({
   
-  gameName: String,
-  gameLevel: String,
-  maxNoOfParticipants: Number, //How many players are needed?
+  game: String,
+  level: String,
+  players: Number, //How many players are needed?
   
   location: String,
   date: Date, //time: String, //Check if needed?, perhaps together with date
 
   // hostID: String,
   // hostUserName: String,
-  hostEmail: String,
+  email: String,
   details: String, //Tell us more about the board-up
   // contactInfo: String, 
   

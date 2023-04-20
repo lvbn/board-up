@@ -11,7 +11,7 @@ export async function fetchAllBoardUps() {
 }
 
 export async function postBoardUp(body) {
-  const response = await fetch(`${API_URL}/board-ups`, {
+  const response = await fetch(`${API_URL}/new-board-up`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
@@ -19,5 +19,6 @@ export async function postBoardUp(body) {
   if (!response.ok) {
     throw new Error('Failed to post');
   }
-  return await response.json();
+  await response.json();
+  return
 }
