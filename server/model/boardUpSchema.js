@@ -11,10 +11,11 @@ const BUSchema = new mongoose.Schema({
   location: String,
   date: Date, //time: String, //Check if needed?, perhaps together with date
 
-  hostID: String,
-  hostUserName: String,
+  // hostID: String,
+  // hostUserName: String,
+  hostEmail: String,
   details: String, //Tell us more about the board-up
-  contactInfo: String, 
+  // contactInfo: String, 
   
 });
 
