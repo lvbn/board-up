@@ -29,7 +29,7 @@ function App() {
         
         <Route path='/board-ups' element={
           <div>
-            <div className='sticky pt-2 pb-2 top-0 z-50 border-4 border-cyan-800'>
+            <div className='sticky pb-2 top-0 z-50'>
               <NavBar/>
             </div>
             <div className=''>

@@ -34,9 +34,9 @@ export function Welcome() {
       {/* <CubeIcon /> */}
       <br />
       {/* <div> */}
-      <GitHubLogoIcon className='cursor-pointer mr-5' onClick={goGit} />
-      <CubeIcon className='cursor-pointer mr-5' onClick={goGeek} />
-      <HeartIcon className='cursor-pointer mr-5' onClick={goGit}/>
+      <GitHubLogoIcon className='cursor-pointer ml-5' onClick={goGit} />
+      <CubeIcon className='cursor-pointer ml-5' onClick={goGeek} />
+      <HeartIcon className='cursor-pointer ml-5' onClick={goGit}/>
     </footer>
   </div>
 }
