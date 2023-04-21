@@ -4,7 +4,7 @@ import './index.css';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 //Methods
-import { fetchAllBoardUps, postBoardUp } from './apiService';
+import { fetchAllBoardUps, postBoardUp } from './services/apiService';
 //Components
 import { BoardUpMAIN } from './components/board-up-main'
 import { NavBar } from './components/NavBar';

@@ -22,7 +22,7 @@ export function Welcome() {
 
   return <div className="bg-black mt-20 grid justify-items-center content-center">
     <div>
-      <img src='./../../logo.png' className='h-48 cursor-pointer' alt='logo'
+      <img src='./../../logo.png' className='h-48 cursor-pointer' alt='logo redirects to board-ups'
       onClick={handleClick}></img>
     </div> 
     <div className='text-accent text-6xl font-mono font-extrabold'>
@@ -30,7 +30,7 @@ export function Welcome() {
     </div>
     <br/>
     <br/>
-    <footer className='text-slate-800 text-xs flex flex-row'>
+    <footer className='text-slate-300 text-xs flex flex-row'>
       {/* <CubeIcon /> */}
       <br />
       {/* <div> */}

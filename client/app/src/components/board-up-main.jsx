@@ -1,6 +1,6 @@
 import { BoardUp } from './board-up';
 import React, { useEffect, useState } from 'react';
-import { fetchAllBoardUps } from './../apiService';
+import { fetchAllBoardUps } from '../services/apiService';
 
 export function BoardUpMAIN() {
   const [data, setData] = useState([]);

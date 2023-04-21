@@ -17,6 +17,7 @@ module.exports = {
   postBU: async (ctx) => {
     try {
       console.log(ctx)
+      // gamename, gameimage, gameID
       const { game, level, players, location, date, details, email} = ctx.request.body;
       
       const bu = await query.saveBU(game, level, players, location, date, details, email);

@@ -11,6 +11,7 @@ module.exports = {
     return bus
   },
 
+  // gamename, gameimage, gameID
   saveBU: async (game, level, players, location, date, details, email) => {
     const bu = new BoardUp({ game, level, players, location, date, details, email });
     await bu.save();
