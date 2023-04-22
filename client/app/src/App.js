@@ -10,6 +10,7 @@ import { BoardUpMAIN } from './components/board-up-main'
 import { NavBar } from './components/NavBar';
 import { Welcome } from './components/welcome';
 import { Form } from './components/form';
+import { UserDash } from './components/dashboard/userDashboard';
 
 function App() {
 //   const [data, setData] = useState([]);
@@ -26,7 +27,8 @@ function App() {
       <Routes>
         
         <Route path='/' element={<Welcome />} />
-        
+        <Route path='/user:TNT' element={<UserDash />} />
+        {/* <Route path='/user:cyberpunk' element={<UserDash/>} /> */}
         <Route path='/board-ups' element={
           <div>
             <div className='sticky pb-2 top-0 z-50'>

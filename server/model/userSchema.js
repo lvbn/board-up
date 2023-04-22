@@ -3,8 +3,14 @@ const mongoose = require('mongoose');
 //BU = Board-Up
 const userSchema = new mongoose.Schema({
   
-  firstname: String,
-
+  firstname: {
+    type: String,
+    required: true,
+  },
+  lastname: {
+    type: String,
+    // required: true,
+  },
   username: {
     type: String,
     required: true,
@@ -16,8 +22,10 @@ const userSchema = new mongoose.Schema({
     unique: true
   },
   
-  games: Array, //[Array of objects {gameName, experience]
+  status: String,
+  mygames: Array, //[Array of objects {gameName, experience]
   myBUs: Array, //Board-up id [Array of IDs]
+  photo: String,
 
 });
 

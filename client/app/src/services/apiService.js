@@ -22,3 +22,11 @@ export async function postBoardUp(body) {
   await response.json();
   return
 }
+
+// export async function fetchAllBoardUps() {
+//   const response = await fetch(`${API_URL}/board-ups`);
+//   if (!response.ok) {
+//     throw new Error('Failed to fetch');
+//   }
+//   return await response.json();
+// }

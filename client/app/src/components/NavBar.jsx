@@ -10,7 +10,8 @@ export function NavBar() {
   }
 
   function goHome() {
-    navigate('/');
+    // navigate('/user:TNT');
+    navigate('/user:cyberpunk');
   }  
 
   return (<div className='sticky fixed flex justify-between bg-black w-full pt-2'>
