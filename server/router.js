@@ -14,8 +14,8 @@ router.post('/user:TNT', controller.getUser);
 // ->@cyberpunk
 router.post('/user:cyberpunk', controller.getUser); 
 // -> @TNT
-// router.post('/user:TNT', controller.createUser); 
+// router.post('/newuser:TNT', controller.createUser); 
 // ->@cyberpunk
-// router.post('/user:cyberpunk', controller.createUser); 
+// router.post('/newuser:cyberpunk', controller.createUser); 
 
 module.exports = router;
