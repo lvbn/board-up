@@ -4,10 +4,9 @@ const mongoose = require('mongoose');
 
 const BUSchema = new mongoose.Schema({
   
-  gamename: String,
+  game: String,
   // gameimage: String, //image URL
   // gameID: String,
-
   level: String,
   players: Number, //How many players are needed?
   

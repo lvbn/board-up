@@ -45,14 +45,15 @@ export function Form() {
 //   search(searchgame);
 
 // const game = GAMES.find((ele) => ele.gameID === gameID)
-
+  console.log(game, level)
   function handleSubmit(event) {
-    event.preventDefault();
+    // event.preventDefault();
     // let gamename = game.gameName;
     // let gameimage = game.image;
-    // console.log(gamename, gameimage, gameID)
+  console.log(game)
     //gamename, gameimage, gameID
-  post({game, level, players, location, date, details, email })
+    post({ game, level, players, location, date, details, email })
+    
   alert('Submitted !')
 //Clears inputs
   // setGameID('');
@@ -104,7 +105,7 @@ function emailHandler (event){
           <div className='mb-2'> 
             <label>Game:  </label>
               <select size='' className='bg-black text-slate-300 border rounded-md' name='game' onChange={gameHandler} required>
-                <option className='' value='dummy'>search game ...</option>
+                <option className='' value=''>search game ...</option>
               {GAMES.map((ele) => 
                   //Storing the entire element (game) in the value, to be able to store add info in DB
               {

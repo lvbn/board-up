@@ -40,16 +40,7 @@ function App() {
      
         <Route path='/new-board-up' element={
           <div>
-            {/* <div className='sticky pt-2 pb-2 top-0 z-50'>
-               <div className='bg-black grid justify-items-center content-center'>
-                <img src='./../../logo.png' className='h-20' alt='logo'
-                  // onClick={goHome}
-                ></img>
-              </div>
-            </div> */}
-             {/* <main className='relative'> */}
               <Form/>
-            {/* </main> */}
           </div>
           } />
 

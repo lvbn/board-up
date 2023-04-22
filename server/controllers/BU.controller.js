@@ -19,7 +19,7 @@ module.exports = {
       console.log(ctx)
       // gamename, gameimage, gameID
       const { game, level, players, location, date, details, email} = ctx.request.body;
-      
+      console.log(game)
       const bu = await query.saveBU(game, level, players, location, date, details, email);
       
       ctx.response.status = 201;
