@@ -11,6 +11,13 @@ module.exports = {
     return bus
   },
 
+  findBoardById: async (id) => {
+    // console.log(id)
+    const boardup = await BoardUp.findById(id);
+    // console.log(boardup + ' found');
+    return boardup
+  },
+
   // gamename, gameimage, gameID
   saveBU: async (game, level, players, location, date, details, email) => {
     const bu = new BoardUp({ game, level, players, location, date, details, email });

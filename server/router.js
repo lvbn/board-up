@@ -5,7 +5,9 @@ const router = new Router();
 
 // GETS
 router.get('/board-ups', controller.showall);
-// POSTS
+
+router.get('/board-up/:id', controller.findBoard);
+//POST
 router.post('/new-board-up', controller.postBU); //BU = Board-Up
 
 //Provisional routes for 2 different users:

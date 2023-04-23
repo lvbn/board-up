@@ -5,13 +5,13 @@ import { fetchAllBoardUps } from '../services/apiService';
 export function BoardUpMAIN() {
   const [data, setData] = useState([]);
 
+//API service
   async function fetchData() { 
    //bus = board-ups
     const bus =  await fetchAllBoardUps();
     return bus;
   }
 
-  console.log(data)
   //Initialise
   useEffect(() => {
     fetchData().then((bus) => {

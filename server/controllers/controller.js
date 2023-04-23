@@ -15,6 +15,22 @@ module.exports = {
     }
   },
 
+  findBoard: async (ctx) => {
+    try {
+        const id = ctx.params.id;
+        console.log(id)
+        const bu = await boardUpQuery.findBoardById(id);
+        ctx.response.status = 200;
+        // console.log(bu)
+        ctx.body = bu;
+        
+      } catch (err) {
+        console.log(err)
+        ctx.response.status = 400;
+        ctx.redirect('https://httpstatusdogs.com/img/400.jpg');
+      }
+  },
+    
   postBU: async (ctx) => {
     try {
       console.log(ctx)
@@ -52,9 +68,9 @@ module.exports = {
         const { id } = ctx.request.body;
         console.log(id)
         const bu = await userQuery.findUser(id);
-        
         ctx.response.status = 200;
-
+        ctx.body = bu;
+        
       } catch (err) {
         console.log(err)
         ctx.response.status = 400;
