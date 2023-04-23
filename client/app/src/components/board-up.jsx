@@ -9,7 +9,7 @@ import { GAMES } from './../services/mockGames.js'
 export function BoardUp({ bu }) {
   console.log(bu)
 
-  const game = GAMES.find((ele) => ele.gameName === bu.game)
+  // const game = GAMES.find((ele) => ele.gameName === bu.game)
   // console.log(game.image)
 
   const nav = useNavigate();
@@ -25,11 +25,11 @@ export function BoardUp({ bu }) {
   
     return (
       <div className='flex flex-row border-4 border-slate-300 rounded-lg px-4 pt-2 pb-2 text-xs font-sans m-1'>
-    
+        {/* <div className='text-slate-300'>id: {bu._id}</div> */}
         <div className='flex w-5/6 flex-row'>
           <div className='text-xl text-slate-300'>
             <div className='text-accent font-sans font-bold text-xl pb-2'>{bu.game}</div>
-            <img className='cursor-pointer border-0 rounded-xl' alt='example' src={game.image} />
+            {/* <img className='cursor-pointer border-0 rounded-xl' alt='example' src={game.image} /> */}
             <br/>
             <CalendarIcon className='float-left text-accent'/>
             <span className='px-4'>{day}</span><br />

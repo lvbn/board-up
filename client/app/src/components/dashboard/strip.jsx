@@ -29,7 +29,10 @@ console.log(bu)
   return (
     <div className='text-slate-300'>OK
       <div>{bu.game}</div>
-      <BoardUp key={bu._id} value={bu} />
+       {(!bu) ? <div></div> :
+            <BoardUp key={bu._id} bu={bu}/>
+            }
+      {/* <BoardUp key={bu._id} bu={bu} /> */}
     </div>
   )
 }
