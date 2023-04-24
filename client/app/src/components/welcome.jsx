@@ -7,7 +7,7 @@ export function Welcome() {
   const navigate = useNavigate();
 
   function handleClick() {
-    navigate('/board-ups');
+    navigate('/login');
   }
 
   function goGit() {

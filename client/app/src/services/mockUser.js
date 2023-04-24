@@ -15,7 +15,7 @@ export const USERS = [
     { "name": "risk", "level": "beginner" },
     { "name": "monopoly", "level": "advanced" }
   ],
-  "myBUs": ["6443b4521ca9ef9394561133", "6443b4521ca9ef9394561133"],
+  "myBUs": ["6443b4521ca9ef9394561133", "6443b3161ca9ef9394561131"],
   "photo": "https://pbs.twimg.com/profile_images/976941155370795014/ZzdOhH9C_400x400.jpg"
   },
   {
@@ -29,7 +29,7 @@ export const USERS = [
       { "name": "chess", "level": "beginner" },
       { "name": "uno", "level": "advanced" }
     ],
-    "myBUs": ["6443b4521ca9ef9394561133", "6443b4521ca9ef9394561133"],
+    "myBUs": ["6443b5091ca9ef9394561136", "6443b4521ca9ef9394561133"],
     "photo": "https://www.nme.com/wp-content/uploads/2016/09/2013DaftPunkFacebook1260213-1-1.jpg"
   
   },

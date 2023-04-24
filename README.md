@@ -16,4 +16,8 @@ XML-parser for React
 Best board games 2023
 https://www.polygon.com/tabletop-games/23551994/best-new-board-games-2023-frosthaven-thunder-road
 
+Hide scroll bar with tailwind
+https://redpixelthemes.com/blog/tailwindcss-hide-scrollbar/
 
+Tailwind flex
+https://tailwindcss.com/docs/flex

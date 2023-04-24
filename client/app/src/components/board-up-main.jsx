@@ -1,4 +1,5 @@
 import { BoardUp } from './board-up';
+import { NavBar } from './NavBar';
 import React, { useEffect, useState } from 'react';
 import { fetchAllBoardUps } from '../services/apiService';
 
@@ -19,11 +20,12 @@ export function BoardUpMAIN() {
     }); 
   }, []);
   
-    return (
-      <div className='flex justify-center items-center pt-2 m-auto'>
-        <div className='bg-black object-contain w-2/6'>
+  return (
+    <div className='flex justify-center items-center pt-2 mr-10 w-[900px]'>
+      
+        <div className='bg-black object-contain'>
           {(!data[0]) ? <div></div> : data.map((bu) =>
-            <BoardUp key={bu._id} bu={bu}/>
+            <BoardUp key={bu._id} bu={bu} button={true} />
             )}
         </div>
     </div>

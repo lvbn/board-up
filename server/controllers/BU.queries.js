@@ -6,7 +6,7 @@ const BoardUp = mongoose.model('BoardUp', schema);
 module.exports = {
 
   findAll: async () => {
-    const bus = await BoardUp.find();
+    const bus = await BoardUp.find().sort({'date':1});
     console.log( bus + 'all found')
     return bus
   },
