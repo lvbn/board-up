@@ -34,11 +34,10 @@ export async function postBoardUp(body) {
   return
 }
 
-export async function fetchUser(id, username) {
-  const response = await fetch(`${API_URL}/user:${username}`, {
-    method: 'POST',
+export async function fetchUser(username) {
+  const response = await fetch(`${API_URL}/user/${username}`, {
+    method: 'GET',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(id)
   });
   if (!response.ok) {
     throw new Error('Failed to fetch');

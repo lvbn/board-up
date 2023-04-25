@@ -21,8 +21,8 @@ export function BoardUpMAIN() {
   }, []);
   
   return (
-    <div className='flex justify-center items-center pt-2 mr-10 w-[900px]'>
-      
+    // <div className=''> flex justify-center pt-2 mr-10 w-[900px]
+      <div>
         <div className='bg-black object-contain'>
           {(!data[0]) ? <div></div> : data.map((bu) =>
             <BoardUp key={bu._id} bu={bu} button={true} />

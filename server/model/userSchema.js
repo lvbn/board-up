@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
   status: String,
   mygames: Array, //[Array of objects {gameName, experience]
   myBUs: Array, //Board-up id [Array of IDs]
+  hosting: Array,
   photo: String,
 
 });

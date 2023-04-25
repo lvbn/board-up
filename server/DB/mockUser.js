@@ -1,6 +1,6 @@
 // import { }  from "./../../images/daftpunk.jpg"
 
-// TNT Mongo ID = 644425d7749046fa1d46132f
+// TNT Mongo ID = 644425d7749046fa1d46132f 
 // cyberpunk Mongo ID = 64442619749046fa1d461331
   
 export const USERS = [
@@ -16,6 +16,7 @@ export const USERS = [
     { "name": "monopoly", "level": "advanced" }
   ],
   "myBUs": ["6443b4521ca9ef9394561133", "6443b3161ca9ef9394561131"],
+  "hosting": ["6443b5091ca9ef9394561136"],
   "photo": "https://pbs.twimg.com/profile_images/976941155370795014/ZzdOhH9C_400x400.jpg"
   },
   {

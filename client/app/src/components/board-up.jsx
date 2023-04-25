@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player'
 import * as Accordion from '@radix-ui/react-accordion';
 import { useNavigate } from 'react-router-dom';
-import { TriangleDownIcon, PersonIcon, CheckIcon, PlusIcon, SewingPinIcon, CalendarIcon, StopwatchIcon } from '@radix-ui/react-icons'
+import { TriangleDownIcon, PersonIcon, CheckIcon, PlusIcon, SewingPinIcon, CalendarIcon, StopwatchIcon, RocketIcon, Share1Icon } from '@radix-ui/react-icons'
 import { GAMES } from './../services/mockGames'
 
 
@@ -10,8 +10,6 @@ export function BoardUp({ bu, button }) {
   const [game, setGame] = useState('');
   const [click, setClick] = useState(false);
   const [display, setDisplay] = useState(true);
-
-  console.log(bu, button)
 
   useEffect(() => {
     const res = GAMES.find((ele) => ele.gameName === bu.game)
@@ -37,16 +35,16 @@ export function BoardUp({ bu, button }) {
   const time = formatDate.slice(16,21);
   
     return (
-      <div className='flex flex-col border-4 border-slate-300 rounded-lg px-4 pt-2 pb-2 text-xs font-sans m-1'>
+      <div className='flex flex-col border-1 border-slate-300 rounded-lg px-4 pt-2 pb-2 font-sans m-1 bg-zinc-900'>
         <div className='text-accent font-mono font-bold text-2xl pb-2 ml-4 mb-2 mt-1'>{bu.game}</div>
-        <div className='flex flex-row mind'>
-          <div className='w-2/5 ml-4'>
+        <div className='flex flex-row'>
+          <div className='w-3/5 ml-4'>
               {
                 ((game) ? <img className='h-40 w-40 mb-2 cursor-pointer border-0 rounded-xl' alt='board game' src={game.image} />
                 : <div></div> )
             }
           </div>
-          <div className='w-3/5 ml-2 text-xl text-slate-300'>
+          <div className='w-3/4 ml-6 text-base text-slate-300'>
             <div>
             <CalendarIcon className='float-left text-accent mt-2'/>
             <span className='px-4'>{day}</span><br />
@@ -61,7 +59,8 @@ export function BoardUp({ bu, button }) {
                 type='submit' onClick={clicked}>
                 {(click === false) ? (<><PlusIcon />Join</>) :
                   (<><CheckIcon /></>)}
-              </button>)}
+                </button>)}
+                <button className="bg-accent text-black text-sm hover:bg-slate-300 font-bold font-mono w-10 pt-1 px-2 pr-11 mt-8 mr-4 rounded"><Share1Icon/> Share</button>
             </div>
           </div>          
         </div>
@@ -69,8 +68,8 @@ export function BoardUp({ bu, button }) {
                 <Accordion.Root type='multiple' >
                 <Accordion.Item className='mb-2 ml-4 text-sm' value={bu._id}> More info
                   <Accordion.Trigger><TriangleDownIcon className='text-accent'/></Accordion.Trigger>
-                  <Accordion.Content className='pt-1 w-full text-xl'>
-                    <div><span className='text-accent'>host message:</span> <br/><br/>{bu.details}</div> <br/>
+                  <Accordion.Content className='pt-1 w-full text-base'>
+                <div><span className='text-accent'>host message:</span><br/><br/><span className='text-base font-sans'>{bu.details}</span></div> <br/>
                     <PersonIcon className='float-left text-accent'/>
                     <PersonIcon className='text-accent' />
                     <div className='pt-2'>

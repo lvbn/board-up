@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'nintendo': ['"Press Start 2P"', 'cursive'],
+         'sans': ['Helvetica', 'sans-serif'],
+      },
       colors: {
         'accent': '#21FFBC',
       },

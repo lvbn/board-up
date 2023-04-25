@@ -11,13 +11,17 @@ export function Welcome() {
   }
 
   function goGit() {
-    window.location.href = 'https://github.com/karoteblurs/board-up';
+    window.open('https://github.com/karoteblurs/board-up', "_blank", "noreferrer");
     return
   }
 
   function goGeek() {
-    window.location.href = 'https://boardgamegeek.com/browse/boardgame';
+    window.open('https://boardgamegeek.com/browse/boardgame',"_blank", "noreferrer") ;
     return
+  }
+
+  function goDemo() {
+     navigate('/demo');
   }
 
   return <div className="bg-black mt-20 grid justify-items-center content-center">
@@ -36,7 +40,7 @@ export function Welcome() {
       {/* <div> */}
       <GitHubLogoIcon className='cursor-pointer ml-5' onClick={goGit} />
       <CubeIcon className='cursor-pointer ml-5' onClick={goGeek} />
-      <HeartIcon className='cursor-pointer ml-5' onClick={goGit}/>
+      <HeartIcon className='cursor-pointer ml-5' onClick={goDemo}/>
     </footer>
   </div>
 }

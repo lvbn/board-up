@@ -51,8 +51,8 @@ module.exports = {
 
   createUser: async (ctx) => {
     try {
-      const { firstname, lastname, username, email, status, mygames, myBUs, photo} = ctx.request.body;
-      const bu = await userQuery.saveUser(firstname, lastname, username, email, status, mygames, myBUs, photo);
+      const { firstname, lastname, username, email, status, mygames, myBUs, hosting, photo} = ctx.request.body;
+      const bu = await userQuery.saveUser(firstname, lastname, username, email, status, mygames, myBUs, hosting, photo);
       
       ctx.response.status = 201;
 
@@ -65,9 +65,9 @@ module.exports = {
 
   getUser: async (ctx) => {
     try {
-        const { id } = ctx.request.body;
-        console.log(id)
-        const bu = await userQuery.findUser(id);
+        const username = ctx.params.username
+        console.log(username)
+        const bu = await userQuery.findUser(username);
         ctx.response.status = 200;
         ctx.body = bu;
         

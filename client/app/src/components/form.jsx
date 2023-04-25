@@ -93,12 +93,12 @@ function emailHandler (event){
   return (
     <div className='grid mt-2 justify-items-center text-accent text-xl font-mono'>
 
-      <div className='bg-black text-sm'>
+      <div className='bg-black text-base'>
           <div className='grid justify-items-center bg-black pb-5 pt-5 top-0 z-50 cursor-pointer'>
             <img src='./../../logo.png' className='h-16' alt='click logo to redirect to homepage'
             onClick={goHome}></img>
           <br/>
-          <p>Create a board-up invite!</p>
+          <p>Create a boardup invite!</p>
           </div> 
         <form className="text-accent m-2" onSubmit={handleSubmit}>
 

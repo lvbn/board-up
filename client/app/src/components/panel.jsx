@@ -8,7 +8,8 @@ export function Panel() {
   const nav = useNavigate();
 
   function goUser() {
-    nav('/board-ups');
+    // nav('/board-ups');
+    nav('/user/:TNT'); //mock up user
   }
   
   return (
