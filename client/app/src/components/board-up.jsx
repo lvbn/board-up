@@ -1,32 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player'
 import * as Accordion from '@radix-ui/react-accordion';
-import { useNavigate } from 'react-router-dom';
-import { TriangleDownIcon, PersonIcon, CheckIcon, PlusIcon, SewingPinIcon, CalendarIcon, StopwatchIcon, RocketIcon, Share1Icon } from '@radix-ui/react-icons'
-import { GAMES } from './../services/mockGames'
+import { TriangleDownIcon, PersonIcon, CheckIcon, PlusCircledIcon, CrossCircledIcon, SewingPinIcon, CalendarIcon, StopwatchIcon, RocketIcon, Share1Icon } from '@radix-ui/react-icons'
+import { GAMES as mockGames } from './../services/mockGames'
+import { unattend } from '../services/apiService';
 
-
-export function BoardUp({ bu, button }) {
+export function BoardUp({ bu, button, username}) {
   const [game, setGame] = useState('');
   const [click, setClick] = useState(false);
   const [display, setDisplay] = useState(true);
-
+  const [boardup, setBoardUp] = useState('');
+  const [user, setUser] = useState('');
+  // console.log(game, boardup)
   useEffect(() => {
-    const res = GAMES.find((ele) => ele.gameName === bu.game)
+    const res = mockGames.find((ele) => ele.gameName === bu.game)
     setGame(res)
+    setBoardUp(bu)
     setDisplay(button)
-  }, [bu.game])
- 
-  //  console.log(game.image)
-  // console.log(game.image)
-
-  const nav = useNavigate();
-
-  function goLogIn() {    
-    nav('/login');
-  }
+  }, [bu, button])
   
-  function clicked() {
+  async function clicked() {
+    // const temp = e.target.prop.key;
+    // console.log(userID, boardup._id)
+    await unattend(user, boardup._id)
     setClick(true);
   }
   //Format date
@@ -55,12 +50,15 @@ export function BoardUp({ bu, button }) {
             </div>
             <div className='flex justify-end'>
               { (button === false) ? null :
-                (<button className="bg-accent text-black text-sm hover:bg-slate-300 font-bold font-mono w-10 pt-1 px-1 pr-4 mt-8 mr-4 rounded"
-                type='submit' onClick={clicked}>
-                {(click === false) ? (<><PlusIcon />Join</>) :
+                (<button className="bg-accent text-black text-sm hover:bg-slate-300 font-bold font-mono w-10 pt-1 px-1 pr-4 mt-8 mr-1 rounded"
+                type='submit'>
+                {(click === false) ? (<><PlusCircledIcon />Join</>) :
                   (<><CheckIcon /></>)}
                 </button>)}
-                <button className="bg-accent text-black text-sm hover:bg-slate-300 font-bold font-mono w-10 pt-1 px-2 pr-11 mt-8 mr-4 rounded"><Share1Icon/> Share</button>
+              {(button === true) ? null :
+                <button className="bg-accent text-black text-sm hover:bg-slate-300 font-bold font-mono w-16 pt-1 px-2 pr-11 mt-8 mr-1 rounded"
+                onClick={clicked}><CrossCircledIcon />Cancel</button>}
+              <button className="bg-accent text-black text-sm hover:bg-slate-300 font-bold font-mono w-10 pt-1 px-2 pr-11 mt-8 mr-4 rounded"><Share1Icon /> Share</button>
             </div>
           </div>          
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import './../index.css'
 import { useNavigate } from "react-router-dom"
 import { CubeIcon, HeartIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
@@ -28,7 +29,10 @@ export function Welcome() {
     <div>
       <img src='./../../logo.png' className='h-48 cursor-pointer' alt='logo redirects to board-ups'
       onClick={handleClick}></img>
-    </div> 
+    </div>
+    {/* <div>
+       <iframe title='start animation' src="https://embed.lottiefiles.com/animation/93806" onClick={handleClick}></iframe>
+    </div> */}
     <div className='text-accent text-6xl font-mono font-extrabold'>
       boardup
     </div>

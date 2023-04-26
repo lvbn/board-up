@@ -1,7 +1,7 @@
 //Makes requests to the back end
+const API_URL = process.env.REACT_APP_API_URL;
 
-const API_URL = 'http://localhost:8000';
-
+//CRUD operations to the boardups collection//
 export async function fetchAllBoardUps() {
   const response = await fetch(`${API_URL}/board-ups`);
   if (!response.ok) {
@@ -34,6 +34,7 @@ export async function postBoardUp(body) {
   return
 }
 
+//CRUD operations to the users collection//
 export async function fetchUser(username) {
   const response = await fetch(`${API_URL}/user/${username}`, {
     method: 'GET',
@@ -45,3 +46,14 @@ export async function fetchUser(username) {
   return await response.json();
 }
 
+export async function unattend(username, id) {
+  const response = await fetch(`${API_URL}/user/${username}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({username, id}),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to update');
+  }
+  return await response.json();
+}

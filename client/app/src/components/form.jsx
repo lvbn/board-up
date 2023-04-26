@@ -14,7 +14,7 @@ export function Form() {
   const [location, setlocation] = useState('');
   const [details, setDet] = useState('');
   const [email, setEmail] = useState('');
-  const [GAMES, setGAMES] = useState([]);
+  const [games, setGames] = useState([]);
 
 
 //Redirecting
@@ -27,15 +27,15 @@ export function Form() {
 //Request to post the form to the BE
   async function post(obj) {
     const res = await postBoardUp(obj);
-    // console.log(res)
     return res
   }
 
  //Initialise
   useEffect(() => {
-      setGAMES(mockGames); //mock data instead of external API
+      setGames(mockGames); //mock data instead of external API
   }, []);
-  //   const searchgame = 'risk';
+
+//   const searchgame = 'risk';
 // //Search in board game geek database
 //   async function search(searchgame) {
 //     const result = await searchGame(searchgame);
@@ -44,16 +44,9 @@ export function Form() {
 //   }
 //   search(searchgame);
 
-// const game = GAMES.find((ele) => ele.gameID === gameID)
-  console.log(game, level)
   function handleSubmit(event) {
-    // event.preventDefault();
-    // let gamename = game.gameName;
-    // let gameimage = game.image;
-  console.log(game)
-    //gamename, gameimage, gameID
-    post({ game, level, players, location, date, details, email })
-    
+// event.preventDefault();
+  post({ game, level, players, location, date, details, email })  
   alert('Submitted !')
 //Clears inputs
   // setGameID('');
@@ -106,12 +99,10 @@ function emailHandler (event){
             <label>Game:  </label>
               <select size='' className='bg-black text-slate-300 border rounded-md' name='game' onChange={gameHandler} required>
                 <option className='' value=''>search game ...</option>
-              {GAMES.map((ele) => 
+              {games.map((ele) => 
                   //Storing the entire element (game) in the value, to be able to store add info in DB
-              {
-                // console.log(ele);  
+              { 
                 return <option key={ele.gameID} value={ele.gameName}>{ele.gameName}</option>
-                // return <option key={ele.gameID} value={ele.gameID}>{ele.gameName}</option>}
               }
               )}
               </select>
@@ -121,10 +112,10 @@ function emailHandler (event){
             <label>Level:  </label>
               <select className='bg-black text-slate-300 border rounded-md' name='level' onChange={levelHandler} required>
                 <option value="">select level</option>
-                <option value="beginners">Rookies</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="expert">Expert players only</option>
-                <option value="all levels">All levels are welcome!</option>
+                <option value="Rookies">Rookies</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Expert players only">Expert players only</option>
+                <option value="All level are welcome!">All levels are welcome!</option>
               </select>
           </div>
           <div className='mb-2'> 

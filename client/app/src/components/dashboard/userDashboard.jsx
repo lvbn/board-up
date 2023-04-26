@@ -12,24 +12,19 @@ export function UserDash() {
   const [bus, setBUS] = useState(null);
   const [hosting, setHosting] = useState(null);
   const [header, setHeader] = useState(message);
-
-  const nav = useNavigate();
-
-  // function goBoardUp() {
-  //   nav('/board-ups');
-  // }  
   
+  console.log(user)
+
   //API Service
   async function userData(username) {
     const data = await fetchUser(username);
-    // console.log(data)
     return data
   }
 
   ///Initialise
   useEffect(() => { //username provisional, this should work for all users
-      // TNT Mongo
-    const username = 'TNT';
+
+  const username = 'TNT';
   // const username = 'cyberpunk';
   
     userData(username).then((res) => {
@@ -38,17 +33,9 @@ export function UserDash() {
     }); 
   }, [bus]);
 
-  // Rendering with mock user data ///
-  // const renderUser = USERS.find((user) => user.username === mockUser);
-  // console.log(renderUser);
-  // setUser(renderUser)
-  
   function showAttending () {
-    
-    console.log(bus)
     setHeader('Attending')
     setBUS(user.myBUs)
-    //fetch request for the event IDs
     return
   }
 
@@ -81,7 +68,6 @@ export function UserDash() {
             </div>
           </div>
           <div className='flex mt-8 mb-1'>
-            {/* <img className='rounded-full w-40 min-w-full' alt='user profile' src={renderUser.photo} /> */}
             <img className='rounded-full w-40 min-w-full' alt='user profile' src={user.photo} />
           </div>
           <div className='text-center text-base'>{user.firstname} {user.lastname}</div>
@@ -94,7 +80,6 @@ export function UserDash() {
             type='submit' onClick={showHosting}>Hosting</button>
           <button className='bg-slate-300 w-48 pb-3 pt-3 text-base text-center hover:bg-accent text-black  mt-5 rounded'
             type='submit' onClick={goBoardUp} >boardups</button>
-          {/* </div> */}
     
         </div>
       </div>
@@ -103,24 +88,15 @@ export function UserDash() {
         <div className='text-xl text-accent ml-6 mt-2'><span className='border-black rounded bg-zinc-900 pl-2 pr-2 pb-4'>{header}</span></div>
         <NavBar />
         <div className='h-3/4 w-1/2 mr-10 flex-none flex-col self-center scrollbar-hide overflow-y-scroll'>
-          {/* {(!bus && !hosting) ? (<div><BoardUpMAIN /></div>)
-            : (header === 'Attending') ? (bus.length === 0) ? <div>NADA</div>
-              : (bus.map((bu, index) =>
-                <Strip key={index} value={bu} />)
-              ) : (header === 'Hosting') ? (hosting.length === 0) ? <div>NOTHING</div>
-                  : (hosting.map((bu, index) =>
-                     <Strip key={index} value={bu} />)
-                ) : <div><BoardUpMAIN /></div>
-            } */}
           {!bus ? <BoardUpMAIN/>
             : (header === 'Attending') ? 
                   bus.map((bu, index) =>
-                      <Strip key={index} value={bu} />) : (header === message) ? <BoardUpMAIN/> : null
+                    <Strip key={index} value={bu} username={user.username}/>) : (header === message) ? <BoardUpMAIN/> : null
           }
            {!hosting ? null
             : (header === 'Hosting') ? 
                   hosting.map((bu, index) =>
-                      <Strip key={index} value={bu} />) :  (header === message) ? <BoardUpMAIN/> : null
+                    <Strip key={index} value={bu} username={user.username} />) :  (header === message) ? <BoardUpMAIN/> : null
           }
         </div>
       </div>

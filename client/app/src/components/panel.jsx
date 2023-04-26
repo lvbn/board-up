@@ -36,7 +36,7 @@ export function Panel() {
         <label>
           Last name
         </label> <br/>
-        <input size="30" className="text-black" id="firstname" placeholder="Snow" />
+        <input size="30" className="text-black" id="lastname" placeholder="Snow" />
       </fieldset>    
       <fieldset>
         <label className="">

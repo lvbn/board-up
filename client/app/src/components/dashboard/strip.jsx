@@ -8,7 +8,8 @@ export function Strip(props) {
   const [bu, setBU] = useState({});
 
   const ID = props.value;
-
+  console.log(props.username)
+  
   //API service
   async function boardData() { 
    //bus = board-ups
@@ -27,7 +28,7 @@ export function Strip(props) {
 
   return (
     <div className=''>
-      <BoardUp key={bu._id} bu={bu} button={false} />
+      <BoardUp key={bu._id} bu={bu} button={false} username={props.username} />
     </div>
   )
 }

@@ -12,6 +12,8 @@ Calendar time-date picker icon
 https://stackoverflow.com/questions/73899471/how-can-i-change-the-color-of-the-calendar-icon-with-tailwind-css
 
 XML-parser for React
+*I tested a few to be able to access the following API but wasnt successful
+https://boardgamegeek.com/wiki/page/BGG_XML_API2
 
 Best board games 2023
 https://www.polygon.com/tabletop-games/23551994/best-new-board-games-2023-frosthaven-thunder-road

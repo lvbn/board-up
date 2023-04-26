@@ -45,9 +45,7 @@ function App() {
         } />
      
         <Route path='/new-board-up' element={
-          <div>
               <Form/>
-          </div>
           } />
 
       </Routes>

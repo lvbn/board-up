@@ -9,7 +9,7 @@ export function BoardUpMAIN() {
 //API service
   async function fetchData() { 
    //bus = board-ups
-    const bus =  await fetchAllBoardUps();
+    const bus =  await fetchAllBoardUps(); 
     return bus;
   }
 
@@ -24,7 +24,7 @@ export function BoardUpMAIN() {
     // <div className=''> flex justify-center pt-2 mr-10 w-[900px]
       <div>
         <div className='bg-black object-contain'>
-          {(!data[0]) ? <div></div> : data.map((bu) =>
+          {(!data[0]) ? null : data.map((bu) =>
             <BoardUp key={bu._id} bu={bu} button={true} />
             )}
         </div>
