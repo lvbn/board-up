@@ -13,6 +13,8 @@ Button
 
 # Under development
 
+-Form input might need dummy-proof traps to prevent the user to input wrong emails, or the like.. go to the form.jsx component
+
 -Mock user under the server> DB folder have been saved to the database using Postman
  sending json data via post request to the endpoint /newuser (see screenshots: postman) 
  since registration and authentication is not in place yet

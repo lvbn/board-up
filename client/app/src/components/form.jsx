@@ -146,7 +146,7 @@ function emailHandler (event){
           </div>
           <div className='mb-2'> 
             <label>Your email:  </label>
-            <input type='text' size='29' value={email} name='location' placeholder=" dungeons@dragons.dnd"
+            <input type='email' size='29' value={email} name='location' placeholder=" dungeons@dragons.dnd"
             className='bg-black text-slate-300 border rounded-md' onChange={emailHandler} required />
           </div>
           <br />
