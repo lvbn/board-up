@@ -34,7 +34,7 @@ when the event is full (reached number of players) the event should locked (join
 - Great to have: a group chat telegram service for users
 
 # Extra Credits
-- Implement the google address autocomplete API on the form so when the user types their address it autompletes the rest
+- Implement the google address autocomplete API on the form so when the user types their address it autompletes the rest.
 (prevents the user from mistyping the address and saves them hard work) 
 
 # Home site
