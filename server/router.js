@@ -16,10 +16,5 @@ router.get('/user/:username', controller.getUser);
 
 router.post('/newuser', controller.createUser); 
 
-//Provisional routes for 2 different users:
-// -> @TNT
-// router.post('/user:TNT', controller.getUser); 
-// ->@cyberpunk
-router.post('/user:cyberpunk', controller.getUser); 
 
 module.exports = router;

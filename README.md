@@ -1,8 +1,34 @@
 # board-up
 senior solo project @Codeworks 
 
+boardup is an app that allows users to create meet-ups to play games and invite other users to play!
 
+# User flow
 
+Homescreen -> Login -> Userdashboard 
+Options within the dashboard:
+Button Attending:
+Button Hosting:
+Button 
+
+# Under development
+
+-Mock user under the server> DB folder have been saved to the database using Postman
+ sending json data via post request to the endpoint /newuser (see screenshots: postman) 
+ since registration and authentication is not in place yet
+
+-Missing funcionality on the join and cancel buttons under board-up.jsx (BoardUp component)
+
+# Home site
+@ URL+'/'
+
+# How to install?
+Server - Run: node index.js inside of your server folder: board-up>server
+
+Client - Run: npm run start inside of your app folder: board-up>client>app
+
+# Tech Stack
+You can see the tech stack under app>src>components>demo or by clicking on the heart <3 on the home screen
 
 # References
 Nav Bar pin
