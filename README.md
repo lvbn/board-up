@@ -1,17 +1,18 @@
 # board-up
-senior solo project @Codeworks 
-
 boardup is an app that allows users to create meet-ups to play games and invite other users to play!
 
+# Demo on YouTube
+https://youtu.be/UnxtakAmblI
+
 # User flow
-
-Homescreen -> Login -> Userdashboard 
+Homescreen -> Login -> User Dashboard 
 Options within the dashboard:
-Button Attending:
-Button Hosting:
-Button 
+Button Attending -> Show boardups the user is attending
+Button Hosting -> Show boardups the user is hosting
+Button boardups -> Shows all 
+Button Create boardup -> Redirects to the Form component which allows the user to create a boardup (check note below **)
 
-# Under development
+# Needs fixing
 
 -Form input might need dummy-proof traps to prevent the user to input wrong emails, or the like.. go to the form.jsx component
 
@@ -20,14 +21,40 @@ Button
  since registration and authentication is not in place yet
 
 -Missing funcionality on the join and cancel buttons under board-up.jsx (BoardUp component)
+-Missing functionality on the share button under board-up.jsx 
+
+-**On the form, it works well and posts to the database HOWEVER ideally the username or userID should be also passed 
+on to this component to record which user created this and avoid the user to join their own event
+
+# Further Development
+
+- Ideally when you join an event, a counter on how many players are already registered should be on and 
+when the event is full (reached number of players) the event should locked (join button disabled)
+- Ideally when the above is done, the number of players under the more info collapsible menu should display attending= players - 1
+- Great to have: a group chat telegram service for users
+
+# Extra Credits
+- Implement the google address autocomplete API on the form so when the user types their address it autompletes the rest
+(prevents the user from mistyping the address and saves them hard work) 
 
 # Home site
 @ URL+'/'
+@ URL+'/board-ups (shows all board-ups). This site is meant to be public (no auth needed)
+but then the join button shouldn't really be there.
 
-# How to install?
+# How to run?
 Server - Run: node index.js inside of your server folder: board-up>server
-
 Client - Run: npm run start inside of your app folder: board-up>client>app
+
+# What else to install?
+npm you know the drill
+React: npm install react react-dom react-scripts
+Radix icons
+Radix components (one by one ie. accordion, dialog)
+Tailwind: npm install tailwindcss (config tailwind file contains the green accent color global for the app and some fonts)
+Tailwind scrollbar hide
+dotenv (!) Only on the server folder!!! FE doesnt' need this
+
 
 # Tech Stack
 You can see the tech stack under app>src>components>demo or by clicking on the heart <3 on the home screen
