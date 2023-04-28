@@ -21,37 +21,37 @@ function App() {
 
   // function goHome() {
   //   nav('/');
-  // }  
-  
+  // }
+
 
   return (
     <Router>
       <Routes>
-        
+
         <Route path='/' element={<Welcome />} />
         <Route path='/login' element={<Panel />} />
         <Route path='/demo' element={<Demo />} />
         <Route path='/user/:TNT' element={<UserDash className="flex whitespace-nowrap overflow-auto scrollbar-hide" />} />
          <Route path='/user/:cyberpunk' element={<UserDash className="flex whitespace-nowrap overflow-auto scrollbar-hide" />} />
-        <Route path='/board-ups' element={
+        {/* <Route path='/board-ups' element={
           <div>
             <div className='sticky pb-2 top-0 z-50'>
               <NavBar/>
             </div>
             <div className='w-1/3 mx-auto'>
               <BoardUpMAIN/>
-            </div>         
+            </div>
           </div>
-        } />
-     
+        } /> */}
+
         <Route path='/new-board-up' element={
               <Form/>
           } />
 
       </Routes>
     </Router>
-    
-  
+
+
   );
 }
 
