@@ -19,6 +19,10 @@ app.use(authMiddleware);
 // Routes
 app.use('/user', router.user);
 
+app.use('/auth', router.auth);
+
+app.use('/board', router.board);
+
 // Listen
 (async () => {
   const { success, error } = await connectDB();

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { AuthenticatedRequest } from '../models/authenticatedRequest';
-import { create, findOne } from '../models/user';
+import { create, findById } from '../models/user';
 import { signToken } from '../utils/authUtils';
 
 export const getUser = async (req: AuthenticatedRequest, res: Response) => {
@@ -11,7 +11,7 @@ export const getUser = async (req: AuthenticatedRequest, res: Response) => {
     return;
   }
 
-  const { user, error } = await findOne(authToken.id);
+  const { user, error } = await findById(authToken.id);
 
   if (error) {
     console.log('userController/getUser error:', error.message);

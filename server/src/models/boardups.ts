@@ -1,9 +1,9 @@
-import mongoose, { ObjectId, Schema } from 'mongoose';
+import mongoose, { MongooseError, ObjectId, Schema } from 'mongoose';
 
 export interface IBoardup {
   _id?: ObjectId | string;
   host: string;
-  game: string;
+  game: ObjectId | string;
   level: string;
   players: number;
   location: string;
@@ -18,7 +18,8 @@ export const BoardupSchema = new Schema<IBoardup>({
     required: true,
   },
   game: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Game',
     required: true,
   },
   level: {
@@ -49,3 +50,15 @@ export const BoardupSchema = new Schema<IBoardup>({
 });
 
 export const Boardup = mongoose.model<IBoardup>('Boardup', BoardupSchema);
+
+export const create = async (
+  data: IBoardup
+): Promise<{ board?: IBoardup; error?: MongooseError }> => {
+  try {
+    const board = await Boardup.create(data);
+    return { board };
+  } catch (error) {
+    const mongooseError = error as MongooseError;
+    return { error: mongooseError };
+  }
+};

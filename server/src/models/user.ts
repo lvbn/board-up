@@ -33,7 +33,7 @@ export const UserSchema = new Schema<IUser>({
 
 export const User = mongoose.model<IUser>('User', UserSchema);
 
-export const findOne = async (
+export const findById = async (
   id: string
 ): Promise<{ user?: IUser; error?: MongooseError }> => {
   try {
@@ -42,6 +42,26 @@ export const findOne = async (
       user: {
         _id: user.id,
         username: user.username,
+        hostingBoardups: [],
+        attendingBoardups: [],
+      },
+    };
+  } catch (error) {
+    const mongooseError = error as MongooseError;
+    return { error: mongooseError };
+  }
+};
+
+export const findByUsername = async (
+  username: string
+): Promise<{ user?: IUser; error?: MongooseError }> => {
+  try {
+    const user = await User.findOne({ username }).orFail();
+    return {
+      user: {
+        _id: user.id,
+        username: user.username,
+        password: user.password,
         hostingBoardups: [],
         attendingBoardups: [],
       },
