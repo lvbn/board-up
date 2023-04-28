@@ -8,6 +8,8 @@ const connectDB = require('./DB/connectDB');
 const PORT = process.env.SERVER_PORT || 3001;
 const app = new Koa();
 
+// Moving to ts
+
 
 app.use(cors());
 app.use(bodyParser());
