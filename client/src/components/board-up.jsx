@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
-import { TriangleDownIcon, PersonIcon, CheckIcon, PlusCircledIcon, CrossCircledIcon, SewingPinIcon, CalendarIcon, StopwatchIcon, RocketIcon, Share1Icon } from '@radix-ui/react-icons'
+import { TriangleDownIcon, PersonIcon, CheckIcon, PlusCircledIcon, CrossCircledIcon, SewingPinIcon, CalendarIcon, StopwatchIcon, Share1Icon } from '@radix-ui/react-icons'
 import { GAMES as mockGames } from './../services/mockGames'
 import { unattend } from '../services/apiService';
 
@@ -17,7 +17,7 @@ export function BoardUp({ bu, button, username}) {
     setBoardUp(bu)
     setDisplay(button)
   }, [bu, button])
-  
+
   async function clicked() {
     // const temp = e.target.prop.key;
     // console.log(userID, boardup._id)
@@ -28,7 +28,7 @@ export function BoardUp({ bu, button, username}) {
   const formatDate = new Date(bu.date).toString();
   const day = formatDate.slice(0,16);
   const time = formatDate.slice(16,21);
-  
+
     return (
       <div className='flex flex-col border-1 border-slate-300 rounded-lg px-4 pt-2 pb-2 font-sans m-1 bg-zinc-900'>
         <div className='text-accent font-mono font-bold text-2xl pb-2 ml-4 mb-2 mt-1'>{bu.game}</div>
@@ -60,7 +60,7 @@ export function BoardUp({ bu, button, username}) {
                 onClick={clicked}><CrossCircledIcon />Cancel</button>}
               <button className="bg-accent text-black text-sm hover:bg-slate-300 font-bold font-mono w-10 pt-1 px-2 pr-11 mt-8 mr-4 rounded"><Share1Icon /> Share</button>
             </div>
-          </div>          
+          </div>
         </div>
              <div className='text-slate-300'>
                 <Accordion.Root type='multiple' >
@@ -79,7 +79,7 @@ export function BoardUp({ bu, button, username}) {
                     <br/>
                   </Accordion.Content>
                 </Accordion.Item>
-                </Accordion.Root> 
+                </Accordion.Root>
               </div>
       </div>
   );

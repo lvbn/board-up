@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Tabs from '@radix-ui/react-tabs'
 
@@ -11,7 +11,7 @@ export function Panel() {
     // nav('/board-ups');
     nav('/user/:TNT'); //mock up user
   }
-  
+
   return (
     <div className="flex justify-center text-slate-300 text-xl">
     <Tabs.Root className="mt-10" defaultValue="tab1">
@@ -23,7 +23,8 @@ export function Panel() {
         Log in
       </Tabs.Trigger>
     </Tabs.List>
-        
+
+    {/* registration */}
     <Tabs.Content className="pr-5 pl-5 pb-5 pt-5 border border-1 rounded font-mono text-base" value="tab1">
       <p className="pb-5">Create an account at board up.</p>
       <fieldset>
@@ -37,7 +38,7 @@ export function Panel() {
           Last name
         </label> <br/>
         <input size="30" className="text-black" id="lastname" placeholder="Snow" />
-      </fieldset>    
+      </fieldset>
       <fieldset>
         <label className="">
           Username
@@ -49,17 +50,19 @@ export function Panel() {
           Email
         </label> <br/>
         <input size="30" className="text-black" id="email" placeholder="night@watch.wall" />
-      </fieldset>    
+      </fieldset>
       <fieldset className="">
         <label className="" >
-        password      
+        password
         </label> <br/>
         <input size="30" className="text-black" type="password" />
-      </fieldset>    
+      </fieldset>
       <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
         <button className="bg-accent hover:bg-slate-300 text-sm text-black font-bold font-mono py-1 px-1 rounded mt-2">Register</button>
       </div>
     </Tabs.Content>
+
+    {/* log in */}
     <Tabs.Content className="pr-5 pl-5 pb-5 pt-5 border border-1 rounded font-mono text-base" value="tab2">
       <p className="pb-5">Welcome back!</p>
       <fieldset className="">
@@ -70,7 +73,7 @@ export function Panel() {
       </fieldset>
       <fieldset className="">
         <label className="" >
-        password      
+        password
         </label> <br/>
         <input size="30" className="text-black" type="password" />
       </fieldset>
@@ -86,6 +89,6 @@ export function Panel() {
 }
 
 
-  
+
 
 

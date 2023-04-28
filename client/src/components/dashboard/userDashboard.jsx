@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { fetchUser } from '../../services/apiService';
 import { Strip } from './strip'
 import { BoardUpMAIN } from '../board-up-main';
@@ -12,7 +11,7 @@ export function UserDash() {
   const [bus, setBUS] = useState(null);
   const [hosting, setHosting] = useState(null);
   const [header, setHeader] = useState(message);
-  
+
   console.log(user)
 
   //API Service
@@ -26,11 +25,11 @@ export function UserDash() {
 
   const username = 'TNT';
   // const username = 'cyberpunk';
-  
+
     userData(username).then((res) => {
       setUser(res); //setData expects a value but fetchData() returns a Promise, to fix it add .then()
       // setBUS(res.myBUs);
-    }); 
+    });
   }, [bus]);
 
   function showAttending () {
@@ -40,7 +39,7 @@ export function UserDash() {
   }
 
   function showHosting() {
-    
+
     console.log(hosting)
     setHeader('Hosting')
     setHosting(user.hosting)
@@ -56,7 +55,7 @@ export function UserDash() {
 
   return (
     <div className='flex flex-row text-slate-300 text-3xl font-mono flex border-0 m-2 overscroll-none'>
-    
+
       <div className='h-screen basis-2/5 text-slate-300 border-solid border-r-2 border-accent'>
         <div className='mt-6 flex flex-col items-center'>
           <div className='flex flex-row' >
@@ -80,27 +79,27 @@ export function UserDash() {
             type='submit' onClick={showHosting}>Hosting</button>
           <button className='bg-slate-300 w-48 pb-3 pt-3 text-base text-center hover:bg-accent text-black  mt-5 rounded'
             type='submit' onClick={goBoardUp} >boardups</button>
-    
+
         </div>
       </div>
-     
+
       <div className="h-screen flex flex-col w-full">
         <div className='text-xl text-accent ml-6 mt-2'><span className='border-black rounded bg-zinc-900 pl-2 pr-2 pb-4'>{header}</span></div>
         <NavBar />
         <div className='h-3/4 w-1/2 mr-10 flex-none flex-col self-center scrollbar-hide overflow-y-scroll'>
           {!bus ? <BoardUpMAIN/>
-            : (header === 'Attending') ? 
+            : (header === 'Attending') ?
                   bus.map((bu, index) =>
                     <Strip key={index} value={bu} username={user.username}/>) : (header === message) ? <BoardUpMAIN/> : null
           }
            {!hosting ? null
-            : (header === 'Hosting') ? 
+            : (header === 'Hosting') ?
                   hosting.map((bu, index) =>
                     <Strip key={index} value={bu} username={user.username} />) :  (header === message) ? <BoardUpMAIN/> : null
           }
         </div>
       </div>
-      
+
     </div>
   );
 }

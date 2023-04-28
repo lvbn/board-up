@@ -2,16 +2,16 @@
 import { useNavigate } from "react-router-dom"
 
 export function NavBar() {
-  
+
   const navigate = useNavigate();
-  
+
   function handleClick() {
-    window.open('/new-board-up');
+    navigate('/new-board-up');
   }
 
   function goHome() {
     navigate('/');
-  }  
+  }
 
   return (<nav className='sticky fixed flex justify-end bg-black w-full'>
             <div className='cursor-pointer'>
