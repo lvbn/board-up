@@ -1,22 +1,19 @@
-import mongoose, { ObjectId, Schema } from 'mongoose';
+import mongoose, { Document, MongooseError, ObjectId, Schema } from 'mongoose';
+import bcrypt from 'bcrypt';
 
 export interface IUser {
   _id?: ObjectId | string;
-  name: string;
-  email: string;
-  password: string;
+  username: string;
+  password?: string;
   hostingBoardups: ObjectId[];
   attendingBoardups: ObjectId[];
 }
 
 export const UserSchema = new Schema<IUser>({
-  name: {
+  username: {
     type: String,
     required: true,
-  },
-  email: {
-    type: String,
-    required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -35,3 +32,50 @@ export const UserSchema = new Schema<IUser>({
 });
 
 export const User = mongoose.model<IUser>('User', UserSchema);
+
+export const findOne = async (
+  id: string
+): Promise<{ user?: IUser; error?: MongooseError }> => {
+  try {
+    const user = await User.findById(id).orFail();
+    return {
+      user: {
+        _id: user.id,
+        username: user.username,
+        hostingBoardups: [],
+        attendingBoardups: [],
+      },
+    };
+  } catch (error) {
+    const mongooseError = error as MongooseError;
+    return { error: mongooseError };
+  }
+};
+
+export const create = async (
+  username: string,
+  password: string
+): Promise<{ user?: IUser; error?: MongooseError }> => {
+  try {
+    // const user = await User.create({name, })
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    const user = await User.create({
+      username: username,
+      password: hashedPassword,
+    });
+
+    return {
+      user: {
+        _id: user.id,
+        username: user.username,
+        hostingBoardups: [],
+        attendingBoardups: [],
+      },
+    };
+  } catch (error) {
+    const mongooseError = error as MongooseError;
+    return { error: mongooseError };
+  }
+};
