@@ -9,6 +9,11 @@ export interface IUser {
   attendingBoardups: ObjectId[];
 }
 
+export interface IReducedUser {
+  _id: string;
+  username: string;
+}
+
 export const UserSchema = new Schema<IUser>({
   username: {
     type: String,

@@ -35,6 +35,8 @@ export const signin = async (req: Request, res: Response) => {
       return;
     }
 
+    // COOKIE AUTH
+
     res.status(200).json({
       _id: user._id,
       username: user.username,
