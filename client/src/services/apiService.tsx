@@ -1,10 +1,10 @@
 //Makes requests to the back end
-import { MockGame, Item } from '../types/types'
-import { USER } from '../types/types'
+import { Item } from '../types/types'
+import { USER, Boardup } from '../types/types'
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-export async function fetchAllBoardUps(): Promise<MockGame[] | undefined> {
+export async function fetchAllBoardUps(): Promise<Boardup[] | undefined> {
   try {
     const response = await fetch(`${API_URL}/board-ups`);
     const data = await response.json()

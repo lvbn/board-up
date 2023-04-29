@@ -1,12 +1,3 @@
-export type MockGame = {
-
-  gameID: string;
-  gameName: string;
-  minplayers: number;
-  maxplayers: number;
-  playingtime: number;
-  image: string;
-}
 
 export type Item = {
   game: string,
@@ -25,11 +16,35 @@ export type USER = {
   email: string,
   status: string,
   myBUs: string[],
-  hosting: string[],
+  hostingBoardups: string[],
+  attendingBoardups: string[],
   photo: string
 }
 
-export type boardupsProps = {
-  boardups: number[],
+export type BOARDUP_PROPS = {
+  boardups: Boardup[],
   action: string,
+}
+
+export type ReducedUser = {
+  _id: string,
+  username: string
+}
+
+export type Game = {
+  _id: string,
+  name: string
+}
+
+export type Boardup = {
+  _id: string,
+  title: string,
+  host: ReducedUser[],
+  game: Game[],
+  level: string,
+  numberOfPlayers: number,
+  location: string,
+  datetime: string,
+  details: string,
+  playersAttending: ReducedUser[]
 }

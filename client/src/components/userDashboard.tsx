@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchUser } from '../services/apiService';
-import { USER } from '../types/types'
+import { fetchAllBoardUps, fetchUser } from '../services/apiService';
+import { USER, Boardup } from '../types/types'
 import Boardups from './Boardups';
 import { NavBar } from './NavBar';
 
@@ -16,13 +16,25 @@ export function UserDash() {
 
   const [dashboardState, setDashboardState] = useState<DashboardState>(DashboardState.BOARDUPS)
   const [user, setUser] = useState<USER | undefined>(undefined);
+  const [data, setData] = useState<Boardup[] | []>([]);
   const [header, setHeader] = useState(message);
+
+  useEffect(() => {
+    async function fetchData() {
+      const bus = await fetchAllBoardUps();
+      // console.log('DATA:::', bus)
+      // setData(() => [ ...(bus ?? [])])
+      setData(bus ?? [])
+    }
+    fetchData()
+  }, []);
 
   useEffect(() => {
     const username = 'TNT';
     async function userData(username: string) {
-      const data = await fetchUser(username);
-      return setUser(data)
+      const user = await fetchUser(username);
+      console.log(user)
+      return setUser(user)
     }
     userData(username)
   }, []);
@@ -30,13 +42,19 @@ export function UserDash() {
   const RenderDashboard: React.FC = () => {
     switch (dashboardState) {
       case DashboardState.ATTENDING: {
-        return <Boardups boardups={[9, 10, 11, 12]} action='Leave' />
+        // return <Boardups boardups={[9, 10, 11, 12]} action='Leave' />
+        return <Boardups boardups={data.filter(bu => {
+          if (user?.attendingBoardups.includes(bu._id)) return bu
+        })} action='Leave' />
       }
       case DashboardState.HOSTING: {
-        return <Boardups boardups={[5, 6, 7, 8]} action='Delete' />
+        // return <Boardups boardups={[5, 6, 7, 8]} action='Delete' />
+        return <Boardups boardups={data.filter(bu => {
+          if (user?.hostingBoardups.includes(bu._id)) return bu
+        })} action='Delete' />
       }
       case DashboardState.BOARDUPS: {
-        return <Boardups boardups={[1, 2, 3, 4]} action='Join' />
+        return <Boardups boardups={data} action='Join' />
       }
     }
   }
@@ -80,17 +98,7 @@ export function UserDash() {
       <div className="h-screen flex flex-col w-full">
         <div className='text-xl text-accent ml-6 mt-2'><span className='border-black rounded bg-zinc-900 pl-2 pr-2 pb-4'>{header}</span></div>
         <NavBar />
-        <div className='h-3/4 w-1/2 mr-10 flex-none flex-col self-center scrollbar-hide overflow-y-scroll'>
-          {/* {!bus ? <BoardUpMAIN/>
-            : (header === 'Attending') ?
-                  bus.map((bu: string, index: number) =>
-                    <Strip key={index} value={bu} username={user?.username}/>) : (header === message) ? <BoardUpMAIN/> : null
-          }
-          {!hosting ? null
-            : (header === 'Hosting') ?
-                  hosting?.map((bu: string, index: number) =>
-                    <Strip key={index} value={bu} username={user?.username} />) :  (header === message) ? <BoardUpMAIN/> : null
-          } */}
+        <div className='h-3/4 min-w-fit w-1/2 flex-none flex-col self-center scrollbar-hide overflow-y-scroll'>
           <RenderDashboard />
         </div>
       </div>

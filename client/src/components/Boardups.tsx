@@ -1,25 +1,25 @@
 import './Boardups.css'
 import { SewingPinIcon, CalendarIcon, StopwatchIcon, Share1Icon, PlusCircledIcon, MinusCircledIcon } from '@radix-ui/react-icons'
-import { boardupsProps } from '../types/types'
+import { BOARDUP_PROPS } from '../types/types'
 
-export default function Boardups({boardups, action}: boardupsProps): JSX.Element {
+export default function Boardups({boardups, action}: BOARDUP_PROPS): JSX.Element {
 
   return (
     <div className='boardupsContainer'>
       <div className='boardupsList'>
         {
-          boardups.map(n => (
-            <div key={n} className='boardup'>
-              <h1>Title - {n} </h1>
+          boardups?.map(b => (
+            <div key={b._id} className='boardup'>
+              <h1>{b.title} </h1>
               <div className='main'>
                 <div className='img'></div>
                 <div className='info'>
                   <CalendarIcon className='float-left text-accent mt-2'/>
-                  <p>Date</p>
+                  <p>{b.datetime}</p>
                   <StopwatchIcon className='float-left text-accent mt-2' />
-                  <p>Time</p>
+                  <p>{b.datetime}</p>
                   <SewingPinIcon className='float-left text-accent mt-2' />
-                  <p>Location</p>
+                  <p>{b.location}</p>
 
                   <div className='buttons'>
                     <button>

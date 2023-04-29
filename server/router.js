@@ -1,12 +1,12 @@
 const Router = require('koa-router');
 // const controller = require('./controllers/controller');
 
-const { getUser } = require('./controllers/controller')
+const { getUser, showAll } = require('./controllers/controller')
 
 const router = new Router();
 
 // // board ups
-// router.get('/board-ups', controller.showall);
+router.get('/board-ups', showAll);
 
 // router.get('/board-up/:id', controller.findBoard);
 

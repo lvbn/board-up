@@ -1,17 +1,25 @@
 const boardUpQuery = require('./BU.queries');
 const userQuery = require('./user.queries');
 
-const { USERS } = require('../DB/mockUser')
+const { USERS, BOARDUPS } = require('../DB/mockUser')
 
 const getUser = async (ctx) => {
-  console.log(USERS[0])
+  // console.log(USERS[0])
   ctx.response.status = 200;
   ctx.body = USERS[0];
 }
 
-module.exports = {
-  getUser
+const showAll = async (ctx) => {
+  console.log(BOARDUPS)
+  ctx.response.status = 200;
+  ctx.body = BOARDUPS;
 }
+
+module.exports = {
+  getUser,
+  showAll
+}
+
 
 // module.exports = {
 

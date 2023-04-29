@@ -3,7 +3,7 @@ import { GAMES } from '../services/mockGames'
 import { useState } from 'react';
 import { RocketIcon } from '@radix-ui/react-icons';
 import { useNavigate } from 'react-router-dom';
-import { MockGame, Item } from '../types/types'
+import {  Item } from '../types/types'
 // import { postBoardUp } from '../services/apiService';
 const postBoardUp = require('../services/apiService')
 
