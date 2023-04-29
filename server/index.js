@@ -11,7 +11,7 @@ const app = new Koa();
 
 app.use(cors());
 app.use(bodyParser());
-// app.use(router.routes());
+app.use(router.routes());
 
 (async () => {
   // connectDB();

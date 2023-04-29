@@ -27,4 +27,9 @@ export type USER = {
   myBUs: string[],
   hosting: string[],
   photo: string
-  }
+}
+
+export type boardupsProps = {
+  boardups: number[],
+  action: string,
+}

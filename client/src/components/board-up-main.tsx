@@ -1,5 +1,4 @@
 import { BoardUp } from './board-up';
-import { NavBar } from './NavBar';
 import React, { useEffect, useState } from 'react';
 import { fetchAllBoardUps } from '../services/apiService';
 import { MockGame } from '../types/types';
@@ -7,18 +6,17 @@ import { MockGame } from '../types/types';
 export function BoardUpMAIN() {
   const [data, setData] = useState<MockGame[]>();
 
-//API service
-  async function fetchData() {
-   //bus = board-ups
-    const bus =  await fetchAllBoardUps();
-    return bus;
-  }
-
   //Initialise
   useEffect(() => {
-    fetchData().then((bus) => {
-      setData(() => [ ...bus]); //setData expects a value but fetchData() returns a Promise, to fix it add .then()
-    });
+
+    //API Service
+    async function userData() {
+      const data = await fetchAllBoardUps();
+      console.log(data)
+      return setData(data)
+    }
+
+    userData()
   }, []);
 
   return (
