@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchBoard } from '../../services/apiService';
-import { BoardUp } from '../board-up'
+// import { BoardUp } from '../_board-up'
 
 
 //{userBU}
@@ -28,7 +28,7 @@ export function Strip(props: any) {
 
   return (
     <div className=''>
-      <BoardUp key={bu} bu={bu} button={false} username={props.username} />
+      {/* <BoardUp key={bu} bu={bu} button={false} username={props.username} /> */}
     </div>
   )
 }

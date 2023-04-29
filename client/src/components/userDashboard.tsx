@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { fetchUser } from '../../services/apiService';
-import { USER } from '../../types/types'
-import Boardups from '../Boardups';
-import { Strip } from './strip'
-import { BoardUpMAIN } from '../board-up-main';
-import { NavBar } from '../NavBar';
-import { PlusCircledIcon } from '@radix-ui/react-icons'
+import { fetchUser } from '../services/apiService';
+import { USER } from '../types/types'
+import Boardups from './Boardups';
+import { NavBar } from './NavBar';
 
 const message = 'Looking for a match? Join a boardup'
 
@@ -16,26 +13,19 @@ enum DashboardState {
 }
 
 export function UserDash() {
+
   const [dashboardState, setDashboardState] = useState<DashboardState>(DashboardState.BOARDUPS)
   const [user, setUser] = useState<USER | undefined>(undefined);
-  const [bus, setBUS] = useState<string[] | undefined>(undefined);
-  const [hosting, setHosting] = useState<string[] | undefined>(undefined);
   const [header, setHeader] = useState(message);
 
-  ///Initialise
-  useEffect(() => { //username provisional, this should work for all users
-
+  useEffect(() => {
     const username = 'TNT';
-
-    //API Service
     async function userData(username: string) {
       const data = await fetchUser(username);
       return setUser(data)
     }
-
     userData(username)
-
-  }, [bus]);
+  }, []);
 
   const RenderDashboard: React.FC = () => {
     switch (dashboardState) {

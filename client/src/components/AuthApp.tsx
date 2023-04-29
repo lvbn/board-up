@@ -2,7 +2,7 @@ import React from 'react'
 import { Form } from './form';
 import { Routes, Route } from "react-router-dom";
 
-import { UserDash } from './dashboard/userDashboard'
+import { UserDash } from './userDashboard'
 // const UserDash = require('./dashboard/userDashboard')
 
 

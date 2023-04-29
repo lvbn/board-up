@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
 import { TriangleDownIcon, PersonIcon, CheckIcon, PlusCircledIcon, CrossCircledIcon, SewingPinIcon, CalendarIcon, StopwatchIcon, Share1Icon } from '@radix-ui/react-icons'
-import { GAMES as mockGames } from '../services/mockGames'
-import { unattend } from '../services/apiService';
+// import { GAMES as mockGames } from '../services/mockGames'
+// import { unattend } from '../services/apiService';
 
 export function BoardUp(bu: any) {
   const [game, setGame] = useState('');
