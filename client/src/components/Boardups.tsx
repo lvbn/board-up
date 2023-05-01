@@ -1,11 +1,20 @@
 import './Boardups.css'
-import { SewingPinIcon, CalendarIcon, StopwatchIcon, Share1Icon, PlusCircledIcon, MinusCircledIcon } from '@radix-ui/react-icons'
-import { BOARDUP_PROPS } from '../types/types'
-import { useEffect } from 'react'
+import { SewingPinIcon, CalendarIcon, StopwatchIcon, Share1Icon, PlusCircledIcon, MinusCircledIcon, CrossCircledIcon } from '@radix-ui/react-icons'
+import { DashboardState } from './userDashboard'
+import { useEffect, useState } from 'react'
+import { fetchAllBoardUps } from '../services/apiService'
+import { Boardup } from '../types/types'
+
+type props = {
+  ids: string[] | undefined,
+  action: DashboardState
+}
+
 
 // ids: string[], dashboardState: DashboardState
-export default function Boardups({ boardups, action }: BOARDUP_PROPS): JSX.Element {
-  // const [boards, setBoards] = useState([])
+export default function Boardups({ ids, action }: props): JSX.Element {
+
+  const [boards, setBoards] = useState<Boardup[] | []>([])
 
   //   useEffect(() => {
   //     switch (dashboardState) {
@@ -25,60 +34,70 @@ export default function Boardups({ boardups, action }: BOARDUP_PROPS): JSX.Eleme
   // {_id: string, username: string}[]
 
 
+  async function fetchData(ids: string[]) {
+    const bus = await fetchAllBoardUps();
+    setBoards(bus ?? [])
+  }
+
+
   useEffect(() => {
-    switch (dashboardState) {
-      case 'Oranges':
-        console.log('Oranges are $0.59 a pound.');
+    switch (action) {
+      case 0:
+        fetchData(ids ?? [])
         break;
-      case 'Mangoes':
-      case 'Papayas':
-        console.log('Mangoes and papayas are $2.79 a pound.');
-        // Expected output: "Mangoes and papayas are $2.79 a pound."
+
+      case 1:
+        fetchData(ids ?? [])
+        break;
+
+      case 2:
+        fetchData(ids ?? [])
         break;
       default:
-        console.log(`Sorry, we are out of ${expr}.`);
+        console.log(`Sorry, we are out of ${action}.`);
     }
-  }, [])
+  }, [action, ids])
+
+  const actionButton = () => {
+    {/*
+        if user._id is in attending ids, then show leave
+        if user._id is not in attending ids, and not the host show join
+        if user._id is the host show delete
+    */}
+    if (action === 0) return <button><MinusCircledIcon /><p>leave</p></button>
+    if (action === 1) return <button><CrossCircledIcon /><p>delete</p></button>
+    if (action === 2) return <button><PlusCircledIcon /><p>leave</p></button>
+  }
 
   return (
-    <div className='boardupsContainer'>
-      <div className='boardupsList'>
-        {
-          boardups?.map(b => (
-            <div key={b._id} className='boardup'>
-              <h1>{b.title} </h1>
-              <div className='main'>
-                <div className='img'></div>
-                <div className='info'>
-                  <CalendarIcon className='float-left text-accent mt-2' />
-                  <p>{b.datetime}</p>
-                  <StopwatchIcon className='float-left text-accent mt-2' />
-                  <p>{b.datetime}</p>
-                  <SewingPinIcon className='float-left text-accent mt-2' />
-                  <p>{b.location}</p>
+    <div className='boardupsList'>
+      {
+        boards?.map(b => (
+          <div key={b._id} className='boardup'>
+            <h1>{b.title} </h1>
+            <div className='main'>
+              <div className='img'></div>
+              <div className='info'>
+                <CalendarIcon className='float-left text-accent mt-2' />
+                <p>{b.datetime}</p>
+                <StopwatchIcon className='float-left text-accent mt-2' />
+                <p>{b.datetime}</p>
+                <SewingPinIcon className='float-left text-accent mt-2' />
+                <p>{b.location}</p>
 
-                  <div className='buttons'>
-                    <button>
-                      {/*
-                          if user._id is in attending ids, then show leave
-                          if user._id is not in attending ids, and not the host show join
-                          if user._id is the host show delete
-                      */}
-                      {(action === 'Delete' || action === 'Leave') ? <MinusCircledIcon /> : <PlusCircledIcon />}
-                      <p>{action}</p>
-                    </button>
-                    <button>
-                      {<Share1Icon />}
-                      <p>Share</p>
-                    </button>
-                  </div>
-
+                <div className='buttons'>
+                  {actionButton()}
+                  <button>
+                    {<Share1Icon />}
+                    <p>Share</p>
+                  </button>
                 </div>
+
               </div>
             </div>
-          ))
-        }
-      </div>
+          </div>
+        ))
+      }
     </div>
   )
 }
