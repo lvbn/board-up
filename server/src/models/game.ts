@@ -1,4 +1,4 @@
-import mongoose, { ObjectId, Schema } from 'mongoose';
+import mongoose, { MongooseError, ObjectId, Schema } from 'mongoose';
 
 export interface IGame {
   _id: ObjectId | string;
@@ -36,4 +36,17 @@ export const Game = mongoose.model<IGame>('Game', GameSchema);
 
 export const create = async () => {
   const game = await Game.create();
+};
+
+export const fetch = async (): Promise<{
+  games?: IGame[];
+  error?: MongooseError;
+}> => {
+  try {
+    const games = await Game.find();
+    return { games };
+  } catch (error) {
+    const mongooseError = error as MongooseError;
+    return { error: mongooseError };
+  }
 };
