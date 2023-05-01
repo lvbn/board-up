@@ -33,3 +33,7 @@ export const GameSchema = new Schema<IGame>({
 });
 
 export const Game = mongoose.model<IGame>('Game', GameSchema);
+
+export const create = async () => {
+  const game = await Game.create();
+};

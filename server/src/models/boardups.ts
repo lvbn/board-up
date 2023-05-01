@@ -1,10 +1,11 @@
 import mongoose, { MongooseError, ObjectId, Schema } from 'mongoose';
 import { IReducedUser } from './user';
+import { IGame } from './game';
 
 export interface IBoardup {
   _id?: ObjectId | string;
   host: ObjectId | string | IReducedUser;
-  game: ObjectId | string;
+  game: ObjectId | string | IGame;
   level: string;
   players: number;
   location: string;
@@ -87,22 +88,19 @@ export const fetch = async (
 ): Promise<{ boards?: IBoardup[]; error?: MongooseError }> => {
   try {
     if (ids) {
-      const boards = await Boardup.find({ _id: { $in: ids } }).populate(
-        'host attending',
-        '_id username'
-      );
+      const boards = await Boardup.find({ _id: { $in: ids } })
+        .populate('game', '_id name mediaUrl')
+        .populate('host attending', '_id username');
       return { boards };
     } else if (exclude) {
-      const boards = await Boardup.find({ host: { $nin: [exclude] } }).populate(
-        'host attending',
-        '_id username'
-      );
+      const boards = await Boardup.find({ host: { $nin: [exclude] } })
+        .populate('game', '_id name mediaUrl')
+        .populate('host attending', '_id username');
       return { boards };
     } else {
-      const boards = await Boardup.find().populate(
-        'host attending',
-        '_id username'
-      );
+      const boards = await Boardup.find()
+        .populate('game', '_id name mediaUrl')
+        .populate('host attending', '_id username');
       return { boards };
     }
   } catch (error) {

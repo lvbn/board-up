@@ -1,4 +1,5 @@
 import mongoose, { MongooseError } from 'mongoose';
+require("../models/game")
 
 const connectDB = async (): Promise<{
   success: boolean;
