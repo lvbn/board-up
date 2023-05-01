@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { fetchAllBoardUps, fetchUser } from '../services/apiService';
-import { USER, Boardup } from '../types/types'
+import { fetchUser } from '../services/apiService';
+import { USER } from '../types/types'
 import Boardups from './Boardups';
 import { NavBar } from './NavBar';
 
 const message = 'Looking for a match? Join a boardup'
 
-enum DashboardState {
+export enum DashboardState {
   ATTENDING,
   HOSTING,
   BOARDUPS
@@ -16,18 +16,7 @@ export function UserDash() {
 
   const [dashboardState, setDashboardState] = useState<DashboardState>(DashboardState.BOARDUPS)
   const [user, setUser] = useState<USER | undefined>(undefined);
-  const [data, setData] = useState<Boardup[] | []>([]);
   const [header, setHeader] = useState(message);
-
-  useEffect(() => {
-    async function fetchData() {
-      const bus = await fetchAllBoardUps();
-      // console.log('DATA:::', bus)
-      // setData(() => [ ...(bus ?? [])])
-      setData(bus ?? [])
-    }
-    fetchData()
-  }, []);
 
   useEffect(() => {
     const username = 'TNT';
@@ -41,23 +30,23 @@ export function UserDash() {
 
   const RenderDashboard: React.FC = () => {
     switch (dashboardState) {
+      // case DashboardState.HOSTING: {
+      //   // return <Boardups boardups={[5, 6, 7, 8]} action='Delete' />
+      //   return <Boardups boardups={data.filter(bu => {
+      //     if (user?.hostingBoardups.includes(bu._id)) return bu
+      //   })} action='Delete' />
+      // }
       case DashboardState.ATTENDING: {
-        // return <Boardups boardups={[9, 10, 11, 12]} action='Leave' />
-        // <Boardups boardups={user.attendingBoardups} />
-        // <Boardups ids={user.attendingBoardups} case={dashboardState} />
-        return <Boardups boardups={data.filter(bu => {
-          if (user?.attendingBoardups.includes(bu._id)) return bu
-        })} action='Leave' />
+        return <Boardups ids={user?.attendingBoardups} action={dashboardState} />
       }
       case DashboardState.HOSTING: {
-        // return <Boardups boardups={[5, 6, 7, 8]} action='Delete' />
-        return <Boardups boardups={data.filter(bu => {
-          if (user?.hostingBoardups.includes(bu._id)) return bu
-        })} action='Delete' />
+        return <Boardups ids={user?.hostingBoardups} action={dashboardState} />
       }
       case DashboardState.BOARDUPS: {
-        return <Boardups boardups={data} action='Join' />
+        return <Boardups ids={[]} action={dashboardState} />
       }
+      default:
+        return <Boardups ids={[]} action={DashboardState.BOARDUPS} />
     }
   }
 

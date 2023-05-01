@@ -9,6 +9,7 @@ export type Item = {
   email: string,
 }
 
+
 export type USER = {
   firstname: string,
   lastname: string,
@@ -19,11 +20,6 @@ export type USER = {
   hostingBoardups: string[],
   attendingBoardups: string[],
   photo: string
-}
-
-export type BOARDUP_PROPS = {
-  boardups: Boardup[],
-  action: string,
 }
 
 export type ReducedUser = {
