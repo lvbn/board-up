@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 
 import { findByUsername } from '../models/user';
+import { signToken } from '../utils/authUtils';
 
 export const signin = async (req: Request, res: Response) => {
   const { username, password } = req.body;
@@ -35,7 +36,19 @@ export const signin = async (req: Request, res: Response) => {
       return;
     }
 
-    // COOKIE AUTH
+    // Create JWT token
+    const token = signToken(user._id as string, user.username);
+
+    if (!token) {
+      console.log('userController/createUser error: TokenNotCreated');
+      res.sendStatus(500);
+      return;
+    }
+
+    // Should refresh token
+    res.cookie('authToken', token, {
+      httpOnly: true,
+    });
 
     res.status(200).json({
       _id: user._id,
