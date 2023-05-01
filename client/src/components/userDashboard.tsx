@@ -44,10 +44,12 @@ export function UserDash() {
       case DashboardState.ATTENDING: {
         // return <Boardups boardups={[9, 10, 11, 12]} action='Leave' />
         // <Boardups boardups={user.attendingBoardups} />
-        // <Boardups ids={user.attendingBoardups} case={dashboardState} />
-        return <Boardups boardups={data.filter(bu => {
-          if (user?.attendingBoardups.includes(bu._id)) return bu
-        })} action='Leave' />
+        
+        <Boardups ids={user.attendingBoardups} case={dashboardState} />
+
+        // return <Boardups boardups={data.filter(bu => {
+        //   if (user?.attendingBoardups.includes(bu._id)) return bu
+        // })} action='Leave' />
       }
       case DashboardState.HOSTING: {
         // return <Boardups boardups={[5, 6, 7, 8]} action='Delete' />
