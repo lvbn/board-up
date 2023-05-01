@@ -23,6 +23,8 @@ app.use('/auth', router.auth);
 
 app.use('/board', router.board);
 
+app.use('/game', router.game);
+
 // Listen
 (async () => {
   const { success, error } = await connectDB();
