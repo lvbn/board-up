@@ -71,6 +71,7 @@ export function UserDash() {
           <div className='text-center text-sm font-sans italic'>- {user?.status}</div>
           <button className='mt-3 mb-2 text-center text-xs text-slate-300 border border-1 border-slate-300 pr-1 pl-1 rounded-full'>edit</button>
           <button className='bg-slate-300 w-48 pb-3 pt-3 text-base  text-center hover:bg-accent text-black mt-5 rounded'
+            aria-label='search for attending boardups'
             type='submit'
             onClick={() => {setDashboardState(DashboardState.ATTENDING); setHeader('ATTENDING')}}
           >Attending</button>
@@ -87,7 +88,7 @@ export function UserDash() {
       </div>
 
       <div className="h-screen flex flex-col w-full">
-        <div className='text-xl text-accent ml-6 mt-2'><span className='border-black rounded bg-zinc-900 pl-2 pr-2 pb-4'>{header}</span></div>
+        <h1 className='text-xl text-accent ml-6 mt-2'><span aria-label='Page Title' className='border-black rounded bg-zinc-900 pl-2 pr-2 pb-4'>{header}</span></h1>
         <NavBar />
         <div className='h-3/4 min-w-fit w-1/2 flex-none flex-col self-center scrollbar-hide overflow-y-scroll'>
           <RenderDashboard />

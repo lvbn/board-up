@@ -2,11 +2,11 @@
 export type Item = {
   game: string,
   level: string,
-  location: string,
-  players: string,
-  date: string,
-  details: string,
-  email: string,
+  // location: string,
+  // players: string,
+  // date: string,
+  // details: string,
+  // email: string,
 }
 
 
