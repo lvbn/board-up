@@ -12,6 +12,6 @@ export const fetchUser = async (): Promise<{ user?: User; error?: string }> => {
     return { error: 'Error Fetching User' };
   }
 
-  const user = response.body as unknown as User;
+  const user = (await response.json()) as unknown as User;
   return { user };
 };

@@ -1,18 +1,47 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
 
-import { signin } from '../../services/authService';
+import { UserContext } from '../../user-context';
+
+import { signin, signup } from '../../services/authService';
 
 export function Panel() {
+  const userContext = useContext(UserContext);
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  //Redirecting
-  const nav = useNavigate();
+  const handleSignin = async () => {
+    if (areFieldsEmpty()) return;
 
-  const handleSignin = () => {
-    console.log(username, password);
+    const { user, error } = await signin(username, password);
+
+    if (error) {
+      console.log('Error', error);
+      return;
+    }
+
+    if (user && userContext.update) {
+      userContext.update(user);
+    }
+  };
+
+  const handleSignup = async () => {
+    if (areFieldsEmpty()) return;
+
+    const { user, error } = await signup(username, password);
+
+    if (error) {
+      console.log('Error', error);
+      return;
+    }
+
+    if (user && userContext.update) {
+      userContext.update(user);
+    }
+  };
+
+  const areFieldsEmpty = () => {
+    return username.length === 0 || password.length === 0;
   };
 
   return (
@@ -46,6 +75,7 @@ export function Panel() {
               className="text-black"
               id="username"
               placeholder="johnsnow"
+              onChange={(ev) => setUsername(ev.target.value.toLowerCase())}
             />
           </fieldset>
           <fieldset className="">
@@ -54,6 +84,7 @@ export function Panel() {
               // size="30"
               className="text-black"
               type="password"
+              onChange={(ev) => setPassword(ev.target.value)}
             />
           </fieldset>
           <div
@@ -63,7 +94,10 @@ export function Panel() {
               justifyContent: 'flex-end',
             }}
           >
-            <button className="bg-accent hover:bg-slate-300 text-sm text-black font-bold font-mono py-1 px-1 rounded mt-2">
+            <button
+              className="bg-accent hover:bg-slate-300 text-sm text-black font-bold font-mono py-1 px-1 rounded mt-2"
+              onClick={handleSignup}
+            >
               Register
             </button>
           </div>
@@ -85,6 +119,7 @@ export function Panel() {
               className="text-black"
               type="email"
               value={username}
+              onChange={(ev) => setUsername(ev.target.value.toLowerCase())}
             />
           </fieldset>
           <fieldset className="">
@@ -93,6 +128,8 @@ export function Panel() {
               // size="30"
               className="text-black"
               type="password"
+              value={password}
+              onChange={(ev) => setPassword(ev.target.value)}
             />
           </fieldset>
           <div
