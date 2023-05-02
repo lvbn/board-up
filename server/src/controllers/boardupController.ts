@@ -1,11 +1,9 @@
 import { Response } from 'express';
 import { AuthenticatedRequest } from '../models/authenticatedRequest';
 import { IBoardup, create, fetch, fetchAll } from '../models/boardups';
+import { addToAttending, addToHosting } from '../models/user';
+import { ObjectId } from 'mongoose';
 
-// Fetch all boards (not user's)
-/**
- *
- */
 export const fetchBoards = async (req: AuthenticatedRequest, res: Response) => {
   const authToken = req.token;
 
@@ -43,7 +41,7 @@ export const createBoard = async (req: AuthenticatedRequest, res: Response) => {
 
   const data = req.body as IBoardup;
 
-  const { board, error } = await create(data);
+  const { board, error } = await create({ ...data, host: authToken.id });
 
   if (error) {
     console.log('boardupController/createBoard error:', error.message);
@@ -57,5 +55,8 @@ export const createBoard = async (req: AuthenticatedRequest, res: Response) => {
     return;
   }
 
-  res.status(200).send(board);
+  // Update user model
+  addToHosting(authToken.id, board._id as ObjectId);
+
+  res.sendStatus(200);
 };

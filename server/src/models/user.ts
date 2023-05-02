@@ -1,4 +1,4 @@
-import mongoose, { Document, MongooseError, ObjectId, Schema } from 'mongoose';
+import mongoose, { MongooseError, ObjectId, Schema } from 'mongoose';
 import bcrypt from 'bcrypt';
 
 export interface IUser {
@@ -47,13 +47,46 @@ export const findById = async (
       user: {
         _id: user.id,
         username: user.username,
-        hostingBoardups: [],
-        attendingBoardups: [],
+        hostingBoardups: user.hostingBoardups,
+        attendingBoardups: user.attendingBoardups,
       },
     };
   } catch (error) {
     const mongooseError = error as MongooseError;
     return { error: mongooseError };
+  }
+};
+
+export const addToAttending = async (
+  userId: string,
+  boardupId: string
+): Promise<{ success: boolean; error?: MongooseError }> => {
+  try {
+    const user = await User.findById(userId).orFail();
+    const boardupCastedId = new mongoose.Schema.Types.ObjectId(boardupId);
+    user.attendingBoardups.push(boardupCastedId);
+
+    await user.save();
+    return { success: true };
+  } catch (error) {
+    const mongooseError = error as MongooseError;
+    return { success: false, error: mongooseError };
+  }
+};
+
+export const addToHosting = async (
+  userId: string,
+  boardupId: ObjectId
+): Promise<{ success: boolean; error?: MongooseError }> => {
+  try {
+    await User.findByIdAndUpdate(userId, {
+      $push: { hostingBoardups: boardupId },
+    }).orFail();
+
+    return { success: true };
+  } catch (error) {
+    const mongooseError = error as MongooseError;
+    return { success: false, error: mongooseError };
   }
 };
 
@@ -67,8 +100,8 @@ export const findByUsername = async (
         _id: user.id,
         username: user.username,
         password: user.password,
-        hostingBoardups: [],
-        attendingBoardups: [],
+        hostingBoardups: user.hostingBoardups,
+        attendingBoardups: user.attendingBoardups,
       },
     };
   } catch (error) {

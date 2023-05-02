@@ -1,7 +1,7 @@
 import mongoose, { MongooseError, ObjectId, Schema } from 'mongoose';
 
 export interface IGame {
-  _id: ObjectId | string;
+  _id?: ObjectId | string;
   name: String;
   minPlayers: Number;
   maxPlayers: Number;

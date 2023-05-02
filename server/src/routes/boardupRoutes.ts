@@ -3,8 +3,8 @@ import { createBoard, fetchBoards } from '../controllers/boardupController';
 
 const router = Router();
 
-router.get('/', fetchBoards);
+router.post('/', fetchBoards);
 
-router.post('/', createBoard);
+router.post('/create', createBoard);
 
 export { router as boardRouter };

@@ -22,7 +22,6 @@ const authMiddleware = (
   const unrestrictedRoute = unrestrictedRoutes.findIndex(
     (route) => route.path === req.path && route.method === req.method
   );
-  console.log(unrestrictedRoute);
   if (unrestrictedRoute !== -1) {
     next();
     return;
