@@ -1,6 +1,7 @@
 import { Response } from 'express';
 import { AuthenticatedRequest } from '../models/authenticatedRequest';
 import { IBoardup, create, fetch, fetchAll } from '../models/boardups';
+import { addToAttending } from '../models/user';
 
 // Fetch all boards (not user's)
 /**
@@ -56,6 +57,9 @@ export const createBoard = async (req: AuthenticatedRequest, res: Response) => {
     res.sendStatus(500);
     return;
   }
+
+  // Update user model
+  addToAttending(authToken.id, board._id?.toString() || '');
 
   res.status(200).send(board);
 };
