@@ -103,7 +103,7 @@ export function UserProfile() {
 
       <div className="h-screen flex flex-col w-full">
         <div className="text-xl text-accent ml-6 mt-2">
-          <span className="border-black rounded bg-zinc-900 pl-2 pr-2 pb-4">
+          <span aria-label='Page Title' className="border-black rounded bg-zinc-900 pl-2 pr-2 pb-4">
             {header}
           </span>
         </div>

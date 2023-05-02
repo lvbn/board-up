@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { RocketIcon } from '@radix-ui/react-icons';
 import { useNavigate } from 'react-router-dom';
-import { Item } from '../types/types';
 import { Game } from '../models/game';
 import { fetchGames } from '../services/gameService';
 import { createBoard } from '../services/boardupService';
@@ -85,10 +84,11 @@ export function Form() {
               className="bg-black text-slate-300 border rounded-md"
               name="game"
               onChange={handleChange}
+              aria-label='select a game'
               required
             >
-              {games.map((game) => (
-                <option key={game._id} value={game._id}>
+              {games.map((game, index) => (
+                <option key={game._id} value={game._id} data-testid={index}>
                   {game.name}
                 </option>
               ))}
@@ -116,6 +116,7 @@ export function Form() {
             <label>How many players are you looking for? </label>
             <br />
             <input
+              aria-label="inset the number of players you will play with"
               type="number"
               min={1}
               max={20}
@@ -131,10 +132,11 @@ export function Form() {
           <label>Location: </label>
           <div className="flex flex-row mb-2">
             <textarea
+              aria-label="inset a location"
               style={{ resize: 'none' }}
               value={item.location}
               name="location"
-              placeholder=" address or venue.."
+              placeholder="address or venue.."
               className="bg-black text-slate-300 border rounded-md"
               onChange={handleChange}
               required
@@ -144,6 +146,7 @@ export function Form() {
           <div className="mb-2">
             <label>Date & Time: </label>
             <input
+              aria-label="inset a date and time"
               type="datetime-local"
               name="datetime"
               value={item.datetime}
@@ -160,6 +163,7 @@ export function Form() {
           <div className="mb-2">
             <textarea
               // rows='3' cols='40'
+              aria-label="inset details about this boardup"
               style={{ resize: 'none' }}
               value={item.details}
               name="details"
@@ -172,7 +176,7 @@ export function Form() {
 
           <br />
           <div className="grid justify-items-end">
-            <button className="bg-accent hover:bg-slate-300 text-sm text-black font-bold font-mono py-1 px-1 rounded mt-2">
+            <button aria-label='submit button' className="bg-accent hover:bg-slate-300 text-sm text-black font-bold font-mono py-1 px-1 rounded mt-2">
               <RocketIcon />
               Send
             </button>
