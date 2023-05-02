@@ -73,30 +73,46 @@ const BoardupList: React.FC<{ ids?: string[]; type: BoardupListType }> = ({
 
   return (
     <div className="boardupsList">
-      {boardups.map((boardup) => (
-        <div key={boardup._id} className="boardup">
-          <h1>{boardup.game.name} </h1>
-          <div className="main">
-            <div className="img"></div>
-            <div className="info">
-              <CalendarIcon className="float-left text-accent mt-2" />
-              {/* <p>{b.datetime}</p> */}
-              <StopwatchIcon className="float-left text-accent mt-2" />
-              {/* <p>{b.datetime}</p> */}
-              <SewingPinIcon className="float-left text-accent mt-2" />
-              {/* <p>{b.location}</p> */}
+      {boardups.map((boardup) => {
+        const date = new Date(Number(boardup.datetime));
+        return (
+          <div key={boardup._id} className="boardup">
+            <h1>{boardup.game.name} </h1>
+            <div className="main">
+              <div className="img">
+                <img src={boardup.game.mediaUrl} alt="Game Image" />
+              </div>
+              <div className="info">
+                <CalendarIcon className="float-left text-accent mt-2" />
+                <p>
+                  {date.toLocaleDateString('en-gb', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </p>
+                <StopwatchIcon className="float-left text-accent mt-2" />
+                <p>
+                  {date.toLocaleTimeString('en-gb', {
+                    hour: 'numeric',
+                    minute: 'numeric',
+                  })}
+                </p>
+                <SewingPinIcon className="float-left text-accent mt-2" />
+                <p>{boardup.location}</p>
 
-              <div className="buttons">
-                {/* {actionButton()} */}
-                <button>
-                  {<Share1Icon />}
-                  <p>Share</p>
-                </button>
+                <div className="buttons">
+                  {/* {actionButton()} */}
+                  <button>
+                    {<Share1Icon />}
+                    <p>Share</p>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };

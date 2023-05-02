@@ -1,8 +1,8 @@
 export interface Game {
   _id: string;
-  name: String;
+  name: string;
   minPlayers?: Number;
   maxPlayers?: Number;
   avgPlayingTime?: Number;
-  mediaUrl: String;
+  mediaUrl: string;
 }

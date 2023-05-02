@@ -3,10 +3,6 @@ import { AuthenticatedRequest } from '../models/authenticatedRequest';
 import { IBoardup, create, fetch, fetchAll } from '../models/boardups';
 import { addToAttending } from '../models/user';
 
-// Fetch all boards (not user's)
-/**
- *
- */
 export const fetchBoards = async (req: AuthenticatedRequest, res: Response) => {
   const authToken = req.token;
 
