@@ -1,17 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 import './index.css';
 
 import AuthApp from './components/AuthApp';
 import VisitorsApp from './components/visitors-app/VisitorsApp';
+import { UserContext } from './user-context';
+import { User } from './models/user';
 
 function App() {
-  const [user, loading, error, fire] = useAuth();
+  const { _user, loading, error, fire } = useAuth();
+  const [user, setUser] = useState<User>();
 
-  console.log(user);
+  useEffect(() => {
+    if (_user) {
+      setUser(_user);
+    }
+  }, [loading]);
 
-  return <Router>{user ? <AuthApp /> : <VisitorsApp />}</Router>;
+  if (loading) {
+    return <div>LOADING</div>;
+  }
+
+  return (
+    <UserContext.Provider
+      value={{ user, update: (user: User) => setUser(user) }}
+    >
+      {user ? <AuthApp /> : <VisitorsApp />}
+    </UserContext.Provider>
+  );
 }
 
 export default App;

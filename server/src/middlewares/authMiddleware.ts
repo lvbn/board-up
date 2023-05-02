@@ -14,11 +14,19 @@ const authMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  const unrestrictedRoutes: Route[] = [{ path: '/user', method: 'POST' }];
+  console.log('ROUTE', req.path, req.method);
+  const unrestrictedRoutes: Route[] = [
+    { path: '/auth/signin', method: 'POST' },
+    { path: '/auth/signup', method: 'POST' },
+  ];
   const unrestrictedRoute = unrestrictedRoutes.findIndex(
     (route) => route.path === req.path && route.method === req.method
   );
-  if (unrestrictedRoute !== -1) next();
+  console.log(unrestrictedRoute);
+  if (unrestrictedRoute !== -1) {
+    next();
+    return;
+  }
 
   // [ START Verify User ]
   // Cookie
