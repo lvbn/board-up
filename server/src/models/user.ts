@@ -74,6 +74,22 @@ export const addToAttending = async (
   }
 };
 
+export const addToHosting = async (
+  userId: string,
+  boardupId: ObjectId
+): Promise<{ success: boolean; error?: MongooseError }> => {
+  try {
+    await User.findByIdAndUpdate(userId, {
+      $push: { hostingBoardups: boardupId },
+    }).orFail();
+
+    return { success: true };
+  } catch (error) {
+    const mongooseError = error as MongooseError;
+    return { success: false, error: mongooseError };
+  }
+};
+
 export const findByUsername = async (
   username: string
 ): Promise<{ user?: IUser; error?: MongooseError }> => {

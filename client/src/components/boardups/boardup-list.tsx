@@ -30,7 +30,13 @@ const BoardupList: React.FC<{ ids?: string[]; type: BoardupListType }> = ({
 
   useEffect(() => {
     switch (type) {
-      case BoardupListType.ATTENDING || BoardupListType.HOSTING: {
+      case BoardupListType.ATTENDING: {
+        if (areIdsEmpty()) return;
+
+        fetchByIds(ids!);
+        break;
+      }
+      case BoardupListType.HOSTING: {
         if (areIdsEmpty()) return;
 
         fetchByIds(ids!);
@@ -41,7 +47,7 @@ const BoardupList: React.FC<{ ids?: string[]; type: BoardupListType }> = ({
         break;
       }
     }
-  }, [type]);
+  }, []);
 
   const fetchByIds = async (ids: string[]) => {
     const { boardups, error } = await fetchBoardsByIds(ids);

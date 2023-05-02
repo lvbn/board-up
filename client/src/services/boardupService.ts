@@ -45,3 +45,32 @@ export const fetchAllBoards = async (): Promise<{
   const boardups = (await response.json()) as unknown as Boardup[];
   return { boardups };
 };
+
+export const createBoard = async (data: {
+  game: string;
+  level: string;
+  players: number;
+  location: string;
+  datetime: string;
+  details: string;
+}): Promise<{
+  success: boolean;
+  error?: string;
+}> => {
+  const response = await fetch(baseUrl + '/create', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    return { success: false, error };
+  }
+
+  return { success: true };
+};
