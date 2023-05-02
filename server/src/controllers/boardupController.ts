@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { AuthenticatedRequest } from '../models/authenticatedRequest';
 import { IBoardup, create, fetch, fetchAll } from '../models/boardups';
-import { addToAttending, addToHosting } from '../models/user';
+import { addToHosting } from '../models/user';
 import { ObjectId } from 'mongoose';
 
 export const fetchBoards = async (req: AuthenticatedRequest, res: Response) => {

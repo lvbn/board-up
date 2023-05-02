@@ -9,14 +9,7 @@ import { UserContext } from './user-context';
 import { User } from './models/user';
 
 function App() {
-  const { _user, loading, error, fire } = useAuth();
-  const [user, setUser] = useState<User>();
-
-  useEffect(() => {
-    if (_user) {
-      setUser(_user);
-    }
-  }, [loading]);
+  const { user, setUser, loading, error, fire } = useAuth();
 
   if (loading) {
     return <div>LOADING</div>;

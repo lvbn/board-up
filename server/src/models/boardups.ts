@@ -1,17 +1,17 @@
 import mongoose, { MongooseError, ObjectId, Schema } from 'mongoose';
-import { IReducedUser } from './user';
+import { IUser } from './user';
 import { IGame } from './game';
 
 export interface IBoardup {
   _id?: ObjectId | string;
-  host: ObjectId | string | IReducedUser;
+  host: ObjectId | string | IUser;
   game: ObjectId | string | IGame;
   level: string;
   players: number;
   location: string;
   datetime: string;
   details: string;
-  attending: ObjectId[] | string[] | IReducedUser[];
+  attending: ObjectId[] | string[] | IUser[];
 }
 
 export const BoardupSchema = new Schema<IBoardup>({
@@ -95,7 +95,8 @@ export const fetch = async (
     } else if (exclude) {
       const boards = await Boardup.find({ host: { $nin: [exclude] } })
         .populate('game', '_id name mediaUrl')
-        .populate('host attending', '_id username');
+        .populate('host', '_id username')
+        .populate('attending', '_id username');
       return { boards };
     } else {
       const boards = await Boardup.find()

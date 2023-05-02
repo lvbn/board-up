@@ -3,7 +3,7 @@ import { User } from '../models/user';
 import { fetchUser } from '../services/userService';
 
 export const useAuth = () => {
-  const [_user, _setUser] = useState<User | undefined>();
+  const [user, setUser] = useState<User | undefined>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | undefined>();
 
@@ -18,7 +18,7 @@ export const useAuth = () => {
       return;
     }
 
-    _setUser(user);
+    setUser(user);
     setLoading(false);
   };
 
@@ -26,5 +26,5 @@ export const useAuth = () => {
     fire();
   }, []);
 
-  return { _user, loading, error, fire };
+  return { user, setUser, loading, error, fire };
 };

@@ -12,7 +12,7 @@ export function Form() {
     game: '',
     level: '',
     location: '',
-    players: 0,
+    players: '',
     datetime: '',
     details: '',
   });
