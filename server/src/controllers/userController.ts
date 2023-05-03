@@ -16,14 +16,14 @@ export const getUser = async (req: AuthenticatedRequest, res: Response) => {
   const { user, error } = await findById(authToken.id);
 
   if (error) {
-    console.log('userController/getUser error:', error.message);
-    res.sendStatus(500);
+    simpleLogger('userController', 'getUser', `Error: DatabaseError`);
+    res.status(500).send('DatabaseError');
     return;
   }
 
   if (!user) {
-    console.log('userController/getUser error: UserNotFound');
-    res.sendStatus(500);
+    simpleLogger('userController', 'getUser', `Error: DatabaseError`);
+    res.status(500).send('DatabaseError');
     return;
   }
 
@@ -31,8 +31,8 @@ export const getUser = async (req: AuthenticatedRequest, res: Response) => {
   const token = signToken(user._id as string, user.username);
 
   if (!token) {
-    console.log('userController/createUser error: TokenNotCreated');
-    res.sendStatus(500);
+    simpleLogger('userController', 'getUser', `Error: TokenNotCreated`);
+    res.status(500).send('TokenNotCreated');
     return;
   }
 

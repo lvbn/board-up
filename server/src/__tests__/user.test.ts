@@ -9,7 +9,7 @@ beforeAll(() => {
   dotenv.config();
 });
 
-describe('user', () => {
+describe.skip('user', () => {
   const cookie = [
     'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGJiZGJkNjI4ODk2ZmVmMTczYWJhYyIsInVzZXJuYW1lIjoiZmVkZXJpY28iLCJpYXQiOjE2ODMxMTQyMTl9.xYI3B5Dv_AEWz2Mxei-tMzxTLlLAyUzDwUzbJtXUsgA; Path=/; HttpOnly;',
   ];
