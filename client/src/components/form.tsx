@@ -62,6 +62,8 @@ export function Form() {
     if (success) {
       navigate('/');
     }
+
+    // reset item
   };
 
   return (
@@ -81,10 +83,10 @@ export function Form() {
           <div className="mb-2">
             <label>Game: </label>
             <select
+              aria-label='select a game'
               className="bg-black text-slate-300 border rounded-md"
               name="game"
               onChange={handleChange}
-              aria-label='select a game'
               required
             >
               {games.map((game, index) => (
@@ -98,16 +100,17 @@ export function Form() {
           <div className="mb-2">
             <label>Level: </label>
             <select
+              aria-label="select a level"
               className="bg-black text-slate-300 border rounded-md"
               name="level"
               onChange={handleChange}
               required
             >
-              <option value="">select level</option>
-              <option value="Rookies">Rookies</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Expert players only">Expert players only</option>
-              <option value="All level are welcome!">
+              <option data-testid="select-option" value="unselected">select level</option>
+              <option data-testid="select-option" value="Rookies">Rookies</option>
+              <option data-testid="select-option" value="Intermediate">Intermediate</option>
+              <option data-testid="select-option" value="Expert players only">Expert players only</option>
+              <option data-testid="select-option" value="All level are welcome!">
                 All levels are welcome!
               </option>
             </select>

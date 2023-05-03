@@ -2,7 +2,7 @@
 
 import '@testing-library/jest-dom'
 import { BrowserRouter } from "react-router-dom"
-import { act, fireEvent, getByTestId, render, screen, waitFor } from "@testing-library/react"
+import { act, fireEvent, getAllByTestId, getByTestId, render, screen, waitFor } from "@testing-library/react"
 
 // User Profile
 import { UserProfile } from "../profile/user-profile"
@@ -67,13 +67,10 @@ describe('userProfile component', () => {
   })
 })
 
-// beforeAll(() => jest.spyOn(window, 'fetch'))
-// assuming jest's resetMocks is configured to "true" so
-// we don't need to worry about cleanup
-// this also assumes that you've loaded a fetch polyfill like `whatwg-fetch`
 
-// Form component
-describe('form component', () => {
+
+// Form component - rendering and enablement
+describe('Check rendering and button enablement', () => {
 
   it('should render the component with the bttn', async () => {
     render(<MockFormRouter />);
@@ -85,6 +82,35 @@ describe('form component', () => {
     render(<MockFormRouter />);
     const submitButton = screen.getByText('Send');
     expect(submitButton).toBeEnabled();
+  })
+
+})
+
+
+
+// Form component - check requirement
+describe('Check requirements', () => {
+
+  // check game
+  it('game should be required', async () => {
+    render(<MockFormRouter />);
+
+    const game = screen.getByLabelText('select a game')
+    const submitButton = screen.getByText('Send');
+    fireEvent.click(submitButton)
+
+    expect(game).toBeRequired()
+  })
+
+  // check level
+  it('level should be required', async () => {
+    render(<MockFormRouter />);
+
+    const level = screen.getByLabelText('select a level')
+    const submitButton = screen.getByText('Send');
+    fireEvent.click(submitButton)
+
+    expect(level).toBeRequired()
   })
 
    // check players
@@ -121,7 +147,7 @@ describe('form component', () => {
   })
 
   // check details
-  it('date & time should be required', async () => {
+  it('details should be required', async () => {
     render(<MockFormRouter />);
 
     const details = screen.getByLabelText('inset details about this boardup')
@@ -130,29 +156,81 @@ describe('form component', () => {
 
     expect(details).toBeRequired()
   })
-
-  // it('should select a game from the options', async () => {
-
-  //   const mockGames = [
-  //     {
-  //       _id: 'abc',
-  //       name: 'abc',
-  //       mediaUrl: 'http://example.com'
-  //     }
-  //   ]
-
-  //   const mockedFetch = jest.spyOn(window, 'fetch').mockImplementation((url) => Promise.resolve(mockGames))
-  //   render(<MockFormRouter />);
+})
 
 
 
-  //   await waitFor(() => {
-  //     expect(screen.getByTestId(0)).toBeInTheDocument()
-  //   })
+// Form component - check typing
+describe('Check typing of the fields', () => {
 
-  //   const selectGame = await screen.findByLabelText('select a game');
-  //   // userEvent.selectOptions(await screen.findByTestId('0'))
+  // check selection in level
+  it('should be able to select a level', async () => {
+    render(<MockFormRouter />);
 
-  //   // fireEvent.change(selectGame, { target: { value: 2 } })
-  // })
+    // https://stackoverflow.com/questions/12989741/the-property-value-does-not-exist-on-value-of-type-htmlelement
+    act(() => {
+      fireEvent.change(screen.getByRole('combobox', {name: /level/i}), {target: {value: 'Rookies'}})
+    })
+    let options = screen.getAllByTestId('select-option') as HTMLOptionElement[]
+    expect(options[1].selected).toBeTruthy();
+  })
+
+  // check typing in location
+  it('should be able to type in textbox for location', async () => {
+    render(<MockFormRouter />);
+
+    const location = screen.getByLabelText<HTMLInputElement>('inset a location')
+    fireEvent.change(location, {target: {value: 'testing typing'}})
+
+    expect(location.value).toBe('testing typing')
+  })
+
+  // check selection in players
+  it('should be able to select number of players', async () => {
+    render(<MockFormRouter />);
+
+    const players = screen.getByLabelText<HTMLInputElement>('inset the number of players you will play with')
+    fireEvent.change(players, {target: {value: 1}})
+
+    expect(players.value).toBe('1')
+  })
+
+  // check selection in date and time
+  it('should be able to select date and time', async () => {
+    render(<MockFormRouter />);
+
+    const dt = screen.getByLabelText<HTMLInputElement>('inset a date and time')
+    fireEvent.change(dt, {target: {value: '2018-06-07T00:00'}})
+
+    expect(dt.value).toBe('2018-06-07T00:00')
+  })
+
+  // check typing in details
+  it('should be able to type in textbox for details', async () => {
+    render(<MockFormRouter />);
+
+    const details = screen.getByLabelText<HTMLInputElement>('inset details about this boardup')
+    fireEvent.change(details, {target: {value: 'testing typing'}})
+
+    expect(details.value).toBe('testing typing')
+  })
+})
+
+
+
+// Form component - check typing
+describe('Check if fields are empty after submition', () => {
+
+  // check typing in location
+  it('should reset the field after submition', async () => {
+    render(<MockFormRouter />);
+
+    const location = screen.getByLabelText<HTMLInputElement>('inset a location')
+    const submitButton = screen.getByText('Send');
+
+    fireEvent.change(location, {target: {value: 'testing typing'}})
+    fireEvent.click(submitButton)
+
+    expect(location.value).toBe('')
+  })
 })
