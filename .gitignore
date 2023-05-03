@@ -1,6 +1,6 @@
 .DS_Store
 
-/server/log.txt
+server/log.txt
 
 # Logs
 logs
