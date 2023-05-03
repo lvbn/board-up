@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import { AuthToken } from '../models/authToken';
 import { AuthenticatedRequest } from '../models/authenticatedRequest';
+import simpleLogger from '../utils/logger';
 
 interface Route {
   path: string;
@@ -14,7 +15,7 @@ const authMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log('ROUTE', req.path, req.method);
+  simpleLogger('authMiddleware', 'METHOD/ROUTE', `${req.method} ${req.path}`);
   const unrestrictedRoutes: Route[] = [
     { path: '/auth/signin', method: 'POST' },
     { path: '/auth/signup', method: 'POST' },
@@ -32,8 +33,8 @@ const authMiddleware = (
   const { authToken } = req.cookies;
 
   if (!authToken) {
-    console.log('authMiddleware error: MissingAuthToken');
-    res.sendStatus(401);
+    simpleLogger('authMiddleware', 'auth', 'Error: MissingAuthToken');
+    res.status(401).send('MissingAuthToken');
     return;
   }
 
@@ -41,8 +42,8 @@ const authMiddleware = (
   const secret = process.env.JWT_SECRET;
 
   if (!secret) {
-    console.log('authMiddleware error: NoSecret');
-    res.sendStatus(500);
+    simpleLogger('authMiddleware', 'auth', 'Error: NoSecret');
+    res.status(500).send('ServerError');
     return;
   }
 

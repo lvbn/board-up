@@ -1,27 +1,29 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { AuthenticatedRequest } from '../models/authenticatedRequest';
-import { create, findById } from '../models/user';
+import { findById } from '../models/user';
 import { signToken } from '../utils/authUtils';
+import simpleLogger from '../utils/logger';
 
 export const getUser = async (req: AuthenticatedRequest, res: Response) => {
   const authToken = req.token;
 
   if (!authToken) {
-    res.sendStatus(401);
+    simpleLogger('userController', 'getUser', `Error: MissingAuthToken`);
+    res.status(401).send('MissingAuthToken');
     return;
   }
 
   const { user, error } = await findById(authToken.id);
 
   if (error) {
-    console.log('userController/getUser error:', error.message);
-    res.sendStatus(500);
+    simpleLogger('userController', 'getUser', `Error: DatabaseError`);
+    res.status(500).send('DatabaseError');
     return;
   }
 
   if (!user) {
-    console.log('userController/getUser error: UserNotFound');
-    res.sendStatus(500);
+    simpleLogger('userController', 'getUser', `Error: DatabaseError`);
+    res.status(500).send('DatabaseError');
     return;
   }
 
@@ -29,8 +31,8 @@ export const getUser = async (req: AuthenticatedRequest, res: Response) => {
   const token = signToken(user._id as string, user.username);
 
   if (!token) {
-    console.log('userController/createUser error: TokenNotCreated');
-    res.sendStatus(500);
+    simpleLogger('userController', 'getUser', `Error: TokenNotCreated`);
+    res.status(500).send('TokenNotCreated');
     return;
   }
 
