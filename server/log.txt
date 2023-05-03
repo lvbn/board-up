@@ -191,3 +191,255 @@ Called signup - Error: DatabaseError
 03/05/2023, 11:55 @ authMiddleware
 Called METHOD/ROUTE - POST /auth/signup
 **
+03/05/2023, 12:00 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 12:00 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 12:00 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 12:00 @ authController
+Called signin - Error: BadData
+**
+03/05/2023, 12:00 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 12:00 @ authController
+Called signin - Error: NoUserFound
+**
+03/05/2023, 12:00 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 12:00 @ authController
+Called signin - Error: IncorrectPassword
+**
+03/05/2023, 12:00 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 12:00 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 12:00 @ authController
+Called signup - Error: BadData
+**
+03/05/2023, 12:00 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 12:00 @ authController
+Called signup - Error: DatabaseError
+**
+03/05/2023, 12:00 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 12:02 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 12:02 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:40 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:40 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:40 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+03/05/2023, 13:40 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:41 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:41 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:41 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+03/05/2023, 13:41 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:41 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:41 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:41 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+03/05/2023, 13:42 @ authMiddleware
+Called METHOD/ROUTE - GET /user
+**
+03/05/2023, 13:42 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:43 @ authMiddleware
+Called METHOD/ROUTE - GET /auth/signin
+**
+03/05/2023, 13:43 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:43 @ authMiddleware
+Called METHOD/ROUTE - GET /auth/signin
+**
+03/05/2023, 13:43 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:43 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 13:44 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:44 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:44 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+03/05/2023, 13:45 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:45 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:45 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:46 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:46 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:46 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:47 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:47 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:47 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:48 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:48 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:48 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:48 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:48 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:48 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:50 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:50 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:50 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:53 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:53 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:53 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:53 @ authMiddleware
+Called METHOD/ROUTE - POST /board/create
+**
+03/05/2023, 13:53 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:56 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:56 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:56 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:56 @ authMiddleware
+Called METHOD/ROUTE - POST /board/create
+**
+03/05/2023, 13:56 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:56 @ authMiddleware
+Called METHOD/ROUTE - POST /board/create
+**
+03/05/2023, 13:56 @ boardupController
+Called create - Error: DatabaseError
+**
+03/05/2023, 13:57 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+03/05/2023, 13:58 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:58 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:58 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:58 @ authMiddleware
+Called METHOD/ROUTE - POST /board/create
+**
+03/05/2023, 13:58 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:58 @ authMiddleware
+Called METHOD/ROUTE - POST /board/create
+**
+03/05/2023, 13:58 @ boardupController
+Called create - Error: DatabaseError
+**
+03/05/2023, 13:58 @ authMiddleware
+Called METHOD/ROUTE - POST /board/create
+**
+03/05/2023, 13:58 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:58 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:58 @ authMiddleware
+Called METHOD/ROUTE - POST /board/
+**
+03/05/2023, 13:58 @ authMiddleware
+Called METHOD/ROUTE - POST /board/create
+**
+03/05/2023, 13:58 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+03/05/2023, 13:58 @ authMiddleware
+Called METHOD/ROUTE - POST /board/create
+**
+03/05/2023, 13:58 @ boardupController
+Called create - Error: DatabaseError
+**
+03/05/2023, 13:58 @ authMiddleware
+Called METHOD/ROUTE - POST /board/create
+**

@@ -34,7 +34,7 @@ const authMiddleware = (
 
   if (!authToken) {
     simpleLogger('authMiddleware', 'auth', 'Error: MissingAuthToken');
-    res.status(400).send('MissingAuthToken');
+    res.status(401).send('MissingAuthToken');
     return;
   }
 
