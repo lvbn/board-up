@@ -94,16 +94,21 @@ export const findByUsername = async (
   username: string
 ): Promise<{ user?: IUser; error?: MongooseError }> => {
   try {
-    const user = await User.findOne({ username }).orFail();
-    return {
-      user: {
-        _id: user.id,
-        username: user.username,
-        password: user.password,
-        hostingBoardups: user.hostingBoardups,
-        attendingBoardups: user.attendingBoardups,
-      },
-    };
+    const user = await User.findOne({ username });
+
+    if (user) {
+      return {
+        user: {
+          _id: user.id,
+          username: user.username,
+          password: user.password,
+          hostingBoardups: user.hostingBoardups,
+          attendingBoardups: user.attendingBoardups,
+        },
+      };
+    } else {
+      return {};
+    }
   } catch (error) {
     const mongooseError = error as MongooseError;
     return { error: mongooseError };

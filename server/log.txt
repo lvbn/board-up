@@ -1,0 +1,193 @@
+
+03/05/2023, 11:47 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:47 @ authController
+Called signin - Error: BadData
+**
+03/05/2023, 11:47 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:47 @ authController
+Called signin - Error: NoUserFound
+**
+03/05/2023, 11:47 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:47 @ authController
+Called signin - Error: IncorrectPassword
+**
+03/05/2023, 11:47 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:49 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:49 @ authController
+Called signin - Error: BadData
+**
+03/05/2023, 11:49 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:49 @ authController
+Called signin - Error: NoUserFound
+**
+03/05/2023, 11:49 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:49 @ authController
+Called signin - Error: IncorrectPassword
+**
+03/05/2023, 11:49 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:49 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 11:49 @ authController
+Called signup - Error: BadData
+**
+03/05/2023, 11:52 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:52 @ authController
+Called signin - Error: BadData
+**
+03/05/2023, 11:52 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:52 @ authController
+Called signin - Error: NoUserFound
+**
+03/05/2023, 11:52 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:52 @ authController
+Called signin - Error: IncorrectPassword
+**
+03/05/2023, 11:52 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:52 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 11:52 @ authController
+Called signup - Error: BadData
+**
+03/05/2023, 11:52 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 11:52 @ authController
+Called signup - Error: DatabaseError
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:54 @ authController
+Called signin - Error: BadData
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:54 @ authController
+Called signin - Error: NoUserFound
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:54 @ authController
+Called signin - Error: IncorrectPassword
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 11:54 @ authController
+Called signup - Error: BadData
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 11:54 @ authController
+Called signup - Error: DatabaseError
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:54 @ authController
+Called signin - Error: NoUserFound
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:54 @ authController
+Called signin - Error: BadData
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:54 @ authController
+Called signin - Error: NoUserFound
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:54 @ authController
+Called signin - Error: IncorrectPassword
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 11:54 @ authController
+Called signup - Error: BadData
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 11:54 @ authController
+Called signup - Error: DatabaseError
+**
+03/05/2023, 11:54 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 11:55 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:55 @ authController
+Called signin - Error: BadData
+**
+03/05/2023, 11:55 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:55 @ authController
+Called signin - Error: NoUserFound
+**
+03/05/2023, 11:55 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:55 @ authController
+Called signin - Error: IncorrectPassword
+**
+03/05/2023, 11:55 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+03/05/2023, 11:55 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 11:55 @ authController
+Called signup - Error: BadData
+**
+03/05/2023, 11:55 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**
+03/05/2023, 11:55 @ authController
+Called signup - Error: DatabaseError
+**
+03/05/2023, 11:55 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signup
+**

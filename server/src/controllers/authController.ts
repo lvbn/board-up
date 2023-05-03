@@ -4,12 +4,14 @@ import bcrypt from 'bcrypt';
 import { create, findByUsername } from '../models/user';
 import { signToken } from '../utils/authUtils';
 
+import simpleLogger from '../utils/logger';
+
 export const signin = async (req: Request, res: Response) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    console.log('authController/signin error: BadData');
-    res.sendStatus(400);
+    simpleLogger('authController', 'signin', 'Error: BadData');
+    res.status(400).send('BadData');
     return;
   }
 
@@ -17,22 +19,22 @@ export const signin = async (req: Request, res: Response) => {
     const { user, error } = await findByUsername(username);
 
     if (error) {
-      console.log('authController/signin error:', error.message);
+      simpleLogger('authController', 'signin', 'Error: DatabaseError');
       res.sendStatus(500);
       return;
     }
 
     if (!user) {
-      console.log('authController/signin error: NoUserFound');
-      res.sendStatus(500);
+      simpleLogger('authController', 'signin', 'Error: NoUserFound');
+      res.status(400).send('NoUser');
       return;
     }
 
     const passMatch = await bcrypt.compare(password, user.password!);
 
     if (!passMatch) {
-      console.log('authController/signin error: PasswordsNoMatch');
-      res.sendStatus(401);
+      simpleLogger('authController', 'signin', 'Error: IncorrectPassword');
+      res.status(401).send('IncorrectPassword');
       return;
     }
 
@@ -40,8 +42,8 @@ export const signin = async (req: Request, res: Response) => {
     const token = signToken(user._id as string, user.username);
 
     if (!token) {
-      console.log('userController/createUser error: TokenNotCreated');
-      res.sendStatus(500);
+      simpleLogger('authController', 'signin', 'Error: TokenNotCreated');
+      res.status(500).send('ServerError');
       return;
     }
 
@@ -53,8 +55,8 @@ export const signin = async (req: Request, res: Response) => {
     res.status(200).json({
       _id: user._id,
       username: user.username,
-      hostingBoardups: [],
-      attendingBoardups: [],
+      hostingBoardups: user.hostingBoardups,
+      attendingBoardups: user.attendingBoardups,
     });
   } catch (error) {
     console.log('authController/signin error:', error);
@@ -66,22 +68,22 @@ export const signup = async (req: Request, res: Response) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    console.log('authController/signup error: BadData');
-    res.sendStatus(400);
+    simpleLogger('authController', 'signup', 'Error: BadData');
+    res.status(400).send('BadData');
     return;
   }
 
   const { user, error } = await create(username.toLowerCase(), password);
 
   if (error) {
-    console.log('authController/signup error:', error.message);
-    res.status(500).send(error.message);
+    simpleLogger('authController', 'signup', 'Error: DatabaseError');
+    res.status(500).send('ServerError');
     return;
   }
 
   if (!user) {
-    console.log('authController/signup error: UserNotCreated');
-    res.sendStatus(500);
+    simpleLogger('authController', 'signup', 'Error: NoUserFound');
+    res.status(500).send('ServerError');
     return;
   }
 
@@ -89,8 +91,8 @@ export const signup = async (req: Request, res: Response) => {
   const token = signToken(user._id as string, user.username);
 
   if (!token) {
-    console.log('authController/signup error: TokenNotCreated');
-    res.sendStatus(500);
+    simpleLogger('authController', 'signup', 'Error: TokenNotCreated');
+    res.status(500).send('ServerError');
     return;
   }
 
