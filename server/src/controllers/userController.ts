@@ -1,13 +1,15 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { AuthenticatedRequest } from '../models/authenticatedRequest';
-import { create, findById } from '../models/user';
+import { findById } from '../models/user';
 import { signToken } from '../utils/authUtils';
+import simpleLogger from '../utils/logger';
 
 export const getUser = async (req: AuthenticatedRequest, res: Response) => {
   const authToken = req.token;
 
   if (!authToken) {
-    res.sendStatus(401);
+    simpleLogger('userController', 'getUser', `Error: MissingAuthToken`);
+    res.status(401).send('MissingAuthToken');
     return;
   }
 
