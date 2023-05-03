@@ -1,5 +1,7 @@
 .DS_Store
 
+/server/log.txt
+
 # Logs
 logs
 *.log

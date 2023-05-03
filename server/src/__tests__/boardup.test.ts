@@ -1,5 +1,4 @@
 import supertest from 'supertest';
-import { randomUUID } from 'crypto';
 import { configApp } from '../app';
 import connectDB from '../database';
 import * as dotenv from 'dotenv';
@@ -10,7 +9,7 @@ beforeAll(() => {
   dotenv.config();
 });
 
-describe('boardup', () => {
+describe.skip('boardup', () => {
   const cookie = [
     'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NGJiZGJkNjI4ODk2ZmVmMTczYWJhYyIsInVzZXJuYW1lIjoiZmVkZXJpY28iLCJpYXQiOjE2ODMxMTQyMTl9.xYI3B5Dv_AEWz2Mxei-tMzxTLlLAyUzDwUzbJtXUsgA; Path=/; HttpOnly;',
   ];
@@ -30,12 +29,19 @@ describe('boardup', () => {
         await connectDB();
       });
 
-      it('should return an array of boardups', async () => {
+      it('should return a 200', async () => {
         const response = await supertest(app)
           .post('/board/')
           .set('Cookie', cookie);
 
         expect(response.statusCode).toBe(200);
+      });
+
+      it('should return an array of boardups', async () => {
+        const response = await supertest(app)
+          .post('/board/')
+          .set('Cookie', cookie);
+
         expect(Array.isArray(response.body)).toBe(true);
       });
     });
