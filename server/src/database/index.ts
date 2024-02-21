@@ -8,6 +8,8 @@ const connectDB = async (): Promise<{
   const user = process.env.MONGODB_USER;
   const pass = process.env.MONGODB_PASS;
 
+  console.log(user, pass)
+
   const uri = `mongodb+srv://${user}:${pass}@cluster0.scx5rkh.mongodb.net/?retryWrites=true&w=majority`;
 
   try {

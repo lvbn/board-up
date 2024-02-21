@@ -1,0 +1,130 @@
+
+19/05/2023, 14:36 @ authMiddleware
+Called METHOD/ROUTE - GET /
+**
+19/05/2023, 14:36 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 14:36 @ authMiddleware
+Called METHOD/ROUTE - GET /favicon.ico
+**
+19/05/2023, 14:36 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 14:38 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 14:38 @ authMiddleware
+Called METHOD/ROUTE - GET /
+**
+19/05/2023, 14:38 @ authMiddleware
+Called METHOD/ROUTE - GET /favicon.ico
+**
+19/05/2023, 14:38 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 14:39 @ authMiddleware
+Called METHOD/ROUTE - GET /
+**
+19/05/2023, 14:39 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 14:39 @ authMiddleware
+Called METHOD/ROUTE - GET /favicon.ico
+**
+19/05/2023, 14:39 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 15:09 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 15:09 @ authMiddleware
+Called METHOD/ROUTE - GET /user
+**
+19/05/2023, 15:09 @ authMiddleware
+Called METHOD/ROUTE - GET /user
+**
+19/05/2023, 15:09 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 15:10 @ authMiddleware
+Called METHOD/ROUTE - GET /
+**
+19/05/2023, 15:10 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 15:10 @ authMiddleware
+Called METHOD/ROUTE - GET /favicon.ico
+**
+19/05/2023, 15:10 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 15:14 @ authMiddleware
+Called METHOD/ROUTE - GET /user
+**
+19/05/2023, 15:14 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 15:14 @ authMiddleware
+Called METHOD/ROUTE - GET /user
+**
+19/05/2023, 15:14 @ authMiddleware
+Called auth - Error: MissingAuthToken
+**
+19/05/2023, 15:14 @ authMiddleware
+Called METHOD/ROUTE - POST /auth/signin
+**
+19/05/2023, 15:14 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:14 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:14 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:14 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - GET /user
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - GET /user
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**
+19/05/2023, 15:18 @ authMiddleware
+Called METHOD/ROUTE - POST /board
+**

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { RocketIcon } from '@radix-ui/react-icons';
 import { useNavigate } from 'react-router-dom';
-import { Item } from '../types/types';
+// import { Item } from '../types/types';
 import { Game } from '../models/game';
 import { fetchGames } from '../services/gameService';
 import { createBoard } from '../services/boardupService';
